@@ -12,6 +12,18 @@
 
 这是一个由 `StriveToLearnCode` 独立维护的 macOS 项目，参考 [红果桌面版 Windows 发行仓库](https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases)的公开界面和功能。**本项目不是红果官方软件，也不是原 Windows 作者发布的 Mac 移植版。**原项目私有源码没有公开；两者的内容来源、底层实现和可用性不能视为相同。
 
+![红果短剧 Mac 版发现页：分类、热播、封面与收藏](assets/discover.png)
+
+<details><summary>查看详情页与播放器截图</summary>
+
+![红果短剧 Mac 版详情与选集](assets/detail.png)
+
+![红果短剧 Mac 版播放器](assets/player.png)
+
+</details>
+
+截图为本项目在 macOS 上运行时拍摄；封面及视频画面来自内容服务，版权归原权利方，具体片单会变化。
+
 ## 功能
 
 - 发现、分类、热播榜、新剧榜、搜索与剧集详情
@@ -42,4 +54,3 @@
 ## 来源与说明
 
 本仓库仅用于公开发行与反馈，不包含应用源码或第三方后端代码。第三方组件在用户设备首次运行时从各自来源获取，具体见 [NOTICE.md](NOTICE.md)。品牌、封面和剧集内容归各自权利方所有。本项目使用描述性名称帮助 Mac 用户找到适配版，不暗示官方授权或与原 Windows 作者合作。
-
