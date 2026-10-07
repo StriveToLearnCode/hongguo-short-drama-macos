@@ -1,0 +1,12 @@
+name: 功能建议
+description: 描述想改善的使用场景
+title: "[建议] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景与期望行为
+    validations:
+      required: true
+

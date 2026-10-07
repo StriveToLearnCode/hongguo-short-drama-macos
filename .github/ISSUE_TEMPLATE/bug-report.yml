@@ -1,0 +1,35 @@
+name: 故障反馈
+description: 反馈安装、搜索、界面或播放问题
+title: "[问题] "
+labels: [bug]
+body:
+  - type: input
+    id: system
+    attributes:
+      label: macOS 版本与处理器
+      placeholder: macOS 15.3，Apple M2 / Intel
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 实际结果与错误提示
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: 请勿公开账号、令牌或完整私人日志。可附遮盖个人信息后的截图。
+
