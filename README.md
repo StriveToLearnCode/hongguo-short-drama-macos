@@ -4,13 +4,15 @@
 
 # 红果短剧 Mac 版｜macOS 桌面播放器（非官方）
 
-**红果短剧电脑版的 macOS 第三方适配版** · Apple Silicon / Intel · macOS 13+
+**红果短剧电脑版的 macOS 第三方适配版** · macOS 13+ · Apple Silicon 已实测
 
-[下载最新 Mac 安装包](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest) · [安装说明](#安装) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[发行页（安装包待公开）](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases) · [安装说明](#安装) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
 这是一个由 `StriveToLearnCode` 独立维护的 macOS 项目，参考 [红果桌面版 Windows 发行仓库](https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases)的公开界面和功能。**本项目不是红果官方软件，也不是原 Windows 作者发布的 Mac 移植版。**原项目私有源码没有公开；两者的内容来源、底层实现和可用性不能视为相同。
+
+**发行状态：**0.1.0 安装包和校验摘要已上传为 GitHub 草稿。外部内容服务仓库没有明确许可证，公开下载暂待授权范围明确。
 
 ![红果短剧 Mac 版发现页：分类、热播、封面与收藏](assets/discover.png)
 
@@ -34,12 +36,16 @@
 
 收藏与进度仅保存在这台 Mac，不同步手机红果账号。在线片单与播放依赖用户设备首次启动时获取的外部内容服务，服务或接口变化可能导致搜索、封面或播放暂时不可用。
 
+当前通用包包含 Apple Silicon 和 Intel 两种应用架构；**物理 Intel Mac 的签名服务与播放尚未实机验证**。x86_64 组件在 Apple Silicon 的 Rosetta 环境中遇到原生库崩溃，安装器会在 M 系列 Mac 上改用原生 arm64 组件。
+
 ## 安装
+
+安装包公开后可按以下步骤安装：
 
 1. 下载发行页的 `HongguoMac-0.1.0-universal.dmg`，核对同页的 SHA-256 摘要。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”。
 3. 首次打开时，如 macOS 提示无法验证开发者，请在“系统设置 → 隐私与安全性”中选择“仍要打开”。本版本没有 Apple Developer ID 签名或公证；请核对下载来源，不要关闭系统防护。
-4. 应用会以图形界面下载独立 Python、Java 和固定版本的外部内容服务。首次运行需要联网，时间与网络速度有关；不需要 Homebrew 或开发者工具。
+4. 应用会以图形界面下载独立 Python、Java 和固定版本的外部内容服务。首次运行需要联网，下载量约 300 MB，网络较慢时可能超过 10 分钟；不需要 Homebrew 或开发者工具。
 
 安装完成后会直接进入发现页。若服务未就绪，界面会显示原因与“重试”“打开安装日志”。
 
