@@ -6,7 +6,7 @@
 
 **非官方 macOS 桌面播放器 · 打开即看 · 历史续播**
 
-[下载 v0.1.0 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/HongguoMac-0.1.0-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v0.1.0 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/HongguoMac-0.1.0-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [Gitee 国内镜像](https://gitee.com/huangxinya0928/hongguo-short-drama-macos/releases/tag/v0.1.0) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -16,11 +16,20 @@
 
 ## 当前功能
 
-- 启动进入推荐播放；自然播完接下一集，可主动切换剧目。
-- 搜索剧名或演员，浏览热播、推荐和新剧榜。
-- 在选集侧栏查看分集、简介和可识别的关联季。
-- 播放中切换画质、倍速，使用置顶小窗、键盘快捷操作和可关闭的弹幕。
-- 在“历史”中按本机保存的集数与进度续播；收藏和设置也保存在本机。
+**打开就看**
+
+- 启动进入推荐播放；上下切换剧目，同一部剧播完后自动接下一集。
+- 推荐流继续加载后续内容，并尽量避开近 24 小时已展示的剧；没有新内容时可重新获取或从榜首重看。这是本机近期去重，不是个性化推荐。
+- 搜索剧名或演员，浏览热播、推荐和新剧榜，结果可直接进入播放器。
+
+**连续追剧**
+
+- 选集侧栏显示简介、分集和可识别的关联季；收藏、历史、集数与观看位置保存在本机。
+- 播放中切换最高画质、1080p、720p、540p、360p；具体可用画质取决于片源，切换失败会保留原播放。
+- 倍速、全屏、置顶小窗与键盘快捷操作；弹幕可随时开关。
+- 中断后重试并尝试其他画质；针对部分 HE-AACv2 音轨做兼容处理。
+- 下一集预加载可在设置中开启，默认关闭以减少额外的网络与 CPU 负担。
+- 深色、浅色或跟随系统；应用内反馈入口与新版本提示。
 
 ![搜索结果](docs/assets/search-latest.png)
 

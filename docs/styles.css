@@ -21,3 +21,4 @@
 .hero-actions{justify-content:flex-start;margin-top:29px}.hero-meta{color:#d5dde0}
 .product-shot img{aspect-ratio:8/5}
 @media(max-width:640px){.hero{background-position:52% center}.hero::before{background:rgba(10,13,18,.76)}.hero-inner{min-height:0;padding-top:26px;padding-bottom:36px}.hero-icon{width:68px;height:68px;margin-bottom:14px}.hero h1{font-size:39px}.hero-lead{font-size:16px}.hero-actions{justify-content:flex-start}.hero-meta{font-size:10px}}
+.mirror-link{display:inline-block;margin:2px 0 8px;color:#c9345a;font-size:13px;font-weight:700}.mirror-link:hover{text-decoration:underline}
