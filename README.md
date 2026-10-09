@@ -6,13 +6,15 @@
 
 **非官方 macOS 桌面播放器 · 打开即看 · 历史续播**
 
-[下载 v0.1.3-rc1 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.3-rc1/HongguoMac-0.1.3-rc1-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.3-rc1/SHA256SUMS.txt) · [反馈问题](https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues)
+[下载 v0.1.4 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.4/HongguoMac-0.1.4-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.4/SHA256SUMS.txt) · [反馈问题](https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues)
 
 </div>
 
-这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和其他桌面客户端没有隶属关系。此仓库用于发行与反馈，不包含客户端源码；v0.1.3-rc1 安装包内置首次运行所需的第三方组件。
+这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和其他桌面客户端没有隶属关系。此仓库用于发行与反馈，不包含客户端源码；v0.1.4 安装包内置首次运行所需的第三方组件。
 
-**v0.1.3-rc1 候选版：**完整 DMG 内置两种 Mac 架构的运行组件，首次启动无需再下载约 300 MB 依赖。延续 v0.1.2 的代理修复和服务断开提示，并改进 Intel 签名后端、全屏控制、搜索框与反馈入口。覆盖安装保留收藏、历史和观看进度。
+**v0.1.4 正式版：**完整 DMG 内置两种 Mac 架构的运行组件，首次启动无需再下载约 300 MB 依赖。更新检查新增备用来源；检查失败仍可打开下载页。延续代理修复、Intel 签名后端与全屏控制改进。覆盖安装保留收藏、历史和观看进度。
+
+**v0.1.1 检查更新失败？** 旧版依赖 GitHub API，已安装的检查逻辑无法远程修复。直接从本页下载 v0.1.4 DMG，拖入“应用程序”覆盖安装一次；之后可使用新版的备用检查来源。
 
 ![当前版本的推荐播放界面](docs/assets/recommend-latest.png)
 
@@ -41,14 +43,14 @@
 
 ## 安装
 
-**v0.1.3-rc1 已实测：Apple Silicon / macOS 15.3.1。**从完整包完成断网首次安装、本机服务启动和实际播放。安装包包含 arm64 与 x86_64 应用及运行组件；M5/macOS 26、物理 Intel Mac、macOS 13 和陌生账户安装仍待实机验证。
+**Apple Silicon / macOS 15.3.1 已验证离线安装与播放；v0.1.4 已验证离线安装回归。**安装包包含 arm64 与 x86_64 应用及运行组件；M5/macOS 26、物理 Intel Mac、macOS 13 和陌生账户安装仍待实机验证。
 
-1. 下载 [`HongguoMac-0.1.3-rc1-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.3-rc1/HongguoMac-0.1.3-rc1-universal.dmg)，与同页的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.3-rc1/SHA256SUMS.txt) 对照。
+1. 下载 [`HongguoMac-0.1.4-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.4/HongguoMac-0.1.4-universal.dmg)，与同页的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.4/SHA256SUMS.txt) 对照。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”。
 3. 从“应用程序”启动。当前预览版采用临时签名，尚未经过 Apple 公证。如果系统**仅提示无法验证开发者**，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并[反馈](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)；不要关闭系统防护。
 4. 首次启动会从安装包在本机配置 Python、Java 和内容服务，完成后自动进入推荐页；安装运行环境不需要联网，搜索和播放仍需联网。
 
-此版本为候选版，更新仍需手动下载安装；应用内的“检查更新”以正式发行版为准。
+应用会检查正式发行版；更新仍需手动下载 DMG 并覆盖安装。
 
 ## 常见问题
 
@@ -56,7 +58,7 @@
 
 **播放中断？** 在播放器中重试、切换画质，或到“设置 → 播放服务”检查连接。反馈时请提供版本、macOS 版本、剧名、集数、操作步骤和错误文字；不要公开账号凭据或完整私人日志。
 
-**提示“所有签名服务失败”？** v0.1.2 起已修复代理误转发 `127.0.0.1` 的问题；若候选版仍报错，请反馈完整错误文字及代理软件名称。
+**提示“所有签名服务失败”？** v0.1.2 起已修复代理误转发 `127.0.0.1` 的问题；若仍报错，请反馈完整错误文字及代理软件名称。
 
 **如何清理缓存？** 先退出应用，再检查 `~/Library/Application Support/HongguoMac/backend/downloads/.stream_cache`。只删除此目录的视频缓存不会删除收藏和历史；下次播放会重新下载。应用启动时会整理旧缓存。
 
