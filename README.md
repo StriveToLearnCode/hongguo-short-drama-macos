@@ -6,7 +6,7 @@
 
 **非官方 macOS 桌面播放器 · 打开即看 · 历史续播**
 
-[下载 v0.1.0 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/HongguoMac-0.1.0-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [Gitee 国内镜像](https://gitee.com/huangxinya0928/hongguo-short-drama-macos/releases/tag/v0.1.0) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v0.1.1 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.1/HongguoMac-0.1.1-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [Gitee 国内镜像](https://gitee.com/huangxinya0928/hongguo-short-drama-macos/releases/tag/v0.1.1) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.1/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -35,11 +35,13 @@
 
 收藏与观看记录不与手机红果账号同步。片单和播放可用性取决于内容来源及网络；推荐来自上游榜单，不是个性化推荐。
 
+0.1.1 起默认发送启动、播放成功和启动失败统计，通过随机安装 ID 去重，服务端仅保存散列值；不上传观看内容、设备信息或错误日志，可在“设置 → 匿名使用统计”中关闭。
+
 ## 安装
 
 **已实测：Apple Silicon / macOS 15.3.1。**安装包包含 arm64 和 x86_64 应用切片；物理 Intel Mac 及 macOS 13 尚未完成实机验证。
 
-1. 下载 [`HongguoMac-0.1.0-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/HongguoMac-0.1.0-universal.dmg)，与同页的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.0/SHA256SUMS.txt) 对照。
+1. 下载 [`HongguoMac-0.1.1-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.1/HongguoMac-0.1.1-universal.dmg)，与同页的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.1/SHA256SUMS.txt) 对照。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”。
 3. 从“应用程序”启动。当前预览版采用临时签名，尚未经过 Apple 公证。如果系统**仅提示无法验证开发者**，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并[反馈](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)；不要关闭系统防护。
 4. 首次启动需要联网下载约 300 MB 的 Python、Java 和内容服务组件，完成后自动进入推荐页；无需自行安装开发工具。
@@ -54,7 +56,7 @@
 
 **如何清理缓存？** 先退出应用，再检查 `~/Library/Application Support/HongguoMac/backend/downloads/.stream_cache`。只删除此目录的视频缓存不会删除收藏和历史；下次播放会重新下载。应用启动时会整理旧缓存。
 
-**如何卸载？** 删除“应用程序”中的客户端。如需清除本机记录和运行组件，再删除 `~/Library/Application Support/HongguoMac`。
+**如何卸载？** 删除“应用程序”中的客户端。如需清除本机记录、匿名统计设置和运行组件，再删除 `~/Library/Application Support/HongguoMac`。
 
 ## 来源
 
