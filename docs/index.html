@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fafafa">
-  <meta name="description" content="红果短剧 Mac 版是非官方 macOS 桌面播放器。下载 v0.1.5 完整安装包，查看推荐连播、历史续播、故障诊断与安装说明。">
+  <meta name="description" content="红果短剧 Mac 版是非官方 macOS 桌面播放器。下载 v0.1.6 安装恢复补丁，查看安装说明与实机验证范围。">
   <link rel="canonical" href="https://strivetolearncode.github.io/hongguo-short-drama-macos/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="红果短剧 Mac 版">
-  <meta property="og:description" content="在 Mac 上打开即看、接着追剧。下载 v0.1.5 完整安装包，了解本机故障诊断与安装限制。">
+  <meta property="og:description" content="在 Mac 上打开即看、接着追剧。下载 v0.1.6 安装恢复补丁，了解本机诊断与安装限制。">
   <meta property="og:url" content="https://strivetolearncode.github.io/hongguo-short-drama-macos/">
   <meta property="og:image" content="https://strivetolearncode.github.io/hongguo-short-drama-macos/assets/recommend-latest.png">
   <title>红果短剧 Mac 版下载 | 非官方 macOS 短剧播放器</title>
@@ -27,7 +27,7 @@
         <a href="#install">安装说明</a>
         <a href="#about">项目说明</a>
       </nav>
-      <a class="header-download" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.5/HongguoMac-0.1.5-universal.dmg">下载 v0.1.5 <span aria-hidden="true">↓</span></a>
+      <a class="header-download" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.6/HongguoMac-0.1.6-universal.dmg">下载 v0.1.6 <span aria-hidden="true">↓</span></a>
     </div>
   </header>
 
@@ -39,11 +39,11 @@
           <p class="hero-lead"><strong>打开即看，</strong>续上你追的那一集。</p>
           <p class="hero-features">推荐连播 <span>·</span> 搜索与榜单 <span>·</span> 即时切画质 <span>·</span> 置顶小窗</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.5/HongguoMac-0.1.5-universal.dmg"><span aria-hidden="true">↓</span> 下载 v0.1.5</a>
+            <a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.6/HongguoMac-0.1.6-universal.dmg"><span aria-hidden="true">↓</span> 下载 v0.1.6</a>
             <a class="button button-secondary" href="#install">安装说明 <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-facts" aria-label="版本与验证信息">
-            <div><strong>v0.1.5</strong><span>最新正式版</span></div>
+            <div><strong>v0.1.6</strong><span>最新正式版</span></div>
             <div><strong>macOS 13+</strong><span>完整离线运行组件</span></div>
             <div><strong>Apple Silicon</strong><span>此前版本已验证播放</span></div>
           </div>
@@ -54,11 +54,11 @@
 
     <section class="release-band" id="release" aria-labelledby="release-title">
       <div class="wrap release-layout">
-        <div class="release-intro"><span class="release-version">本次更新 / v0.1.5</span><h2 id="release-title">追剧更顺，遇到问题也更容易说清。</h2><p>保留熟悉的播放体验，把安装、启动和播放中的故障分清阶段。你能在本机找到详细日志，匿名统计只接收预设失败类别。</p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.5" class="release-detail" target="_blank" rel="noopener noreferrer">阅读完整更新说明 <span aria-hidden="true">↗</span></a></div>
+        <div class="release-intro"><span class="release-version">本次更新 / v0.1.6</span><h2 id="release-title">首次安装失败时，多一条恢复路径。</h2><p>修复架构不匹配的 Python 缓存；离线环境创建失败时使用内置 Python 重试。安装错误详情仍只保留在本机。</p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.6" class="release-detail" target="_blank" rel="noopener noreferrer">阅读完整更新说明 <span aria-hidden="true">↗</span></a></div>
         <div class="release-points" aria-label="本次更新重点">
-          <div><span>01</span><div><h3>失败原因更清楚</h3><p>区分安装、服务断连与播放终态失败；错误详情只留在本机，不自动上传。</p></div></div>
-          <div><span>02</span><div><h3>找剧与连播更顺手</h3><p>推荐续刷与选集切换持续优化，搜索和榜单更容易接上想看的内容。</p></div></div>
-          <div><span>03</span><div><h3>版本与安装信息透明</h3><p>完整包内置运行组件；明确标注未公证和暂未实测的机型。</p></div></div>
+          <div><span>01</span><div><h3>自动修复缓存</h3><p>发现 Python 缓存架构不符时，从已校验的离线组件重新配置。</p></div></div>
+          <div><span>02</span><div><h3>增加安装回退</h3><p>离线虚拟环境创建失败时，尝试内置 Python 的标准库方案。</p></div></div>
+          <div><span>03</span><div><h3>安装提示更准确</h3><p>运行环境安装失败不再误显示为播放服务无法启动；详细原因保留在本机日志。</p></div></div>
         </div>
       </div>
     </section>
@@ -107,12 +107,12 @@
       <div class="wrap download-layout">
         <div><span class="eyebrow">Mac 下载</span><h2 id="download-title">准备好，打开下一集。</h2><p class="download-intro">下载完整安装包后拖入“应用程序”。首次启动只在本机配置内置组件，无需再下载运行环境。</p></div>
         <div class="download-panel">
-          <span class="release-kicker">正式版 · v0.1.5</span>
-          <strong>红果短剧 Mac 版 v0.1.5</strong>
-          <p>完整安装包内置 arm64 与 x86_64 运行组件；增加分阶段故障诊断，播放异常可重试或切换画质。</p>
-          <a class="button button-primary download-button" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.5/HongguoMac-0.1.5-universal.dmg">下载 DMG 安装包 <span aria-hidden="true">↓</span></a>
-          <a class="button button-outline" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.5/SHA256SUMS.txt">下载校验文件 <span aria-hidden="true">↓</span></a>
-          <a class="mirror-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.5" target="_blank" rel="noopener noreferrer">查看版本说明 ↗</a>
+          <span class="release-kicker">正式版 · v0.1.6</span>
+          <strong>红果短剧 Mac 版 v0.1.6</strong>
+          <p>完整安装包内置 arm64 与 x86_64 运行组件；增加安装缓存修复和离线环境回退。物理 Intel 尚待实机验收。</p>
+          <a class="button button-primary download-button" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.6/HongguoMac-0.1.6-universal.dmg">下载 DMG 安装包 <span aria-hidden="true">↓</span></a>
+          <a class="button button-outline" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.6/SHA256SUMS.txt">下载校验文件 <span aria-hidden="true">↓</span></a>
+          <a class="mirror-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.6" target="_blank" rel="noopener noreferrer">查看版本说明 ↗</a>
           <small>安装包约 300 MiB · 首次安装无需下载组件 · M5/macOS 26 与物理 Intel 待实机验证</small>
           <p>旧版检查更新失败？可直接下载 DMG 覆盖安装；本机收藏、历史与观看位置会保留。</p>
         </div>
