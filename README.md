@@ -6,7 +6,7 @@
 
 **非官方 macOS 桌面播放器 · 打开即看 · 历史续播**
 
-[下载 v0.1.8 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/HongguoMac-0.1.8-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/SHA256SUMS.txt) · [反馈问题](https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues)
+[下载 v0.1.8 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/HongguoMac-0.1.8-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
