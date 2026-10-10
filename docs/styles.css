@@ -34,6 +34,11 @@
 .hero-actions{margin-top:30px}
 .hero-actions .button{min-height:54px;min-width:190px;font-size:15px}
 .hero-actions .button-secondary{background:#fff;color:#293237;border-color:#fff}
+.hero-star{margin:14px 0 0;color:#d9e1e2;font-size:13px;line-height:1.6}
+.hero-star a{color:#fff;font-weight:730;text-decoration:underline;text-underline-offset:4px;margin-left:6px}
+.hero-star a:hover{color:#ffafc5}
+.star-support a{color:#b92e58;font-weight:730;text-decoration:underline;text-underline-offset:3px}
+.star-support a:hover{color:#8f2046}
 .hero-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;width:min(720px,100%);margin-top:35px;border-top:1px solid #fff6;border-bottom:1px solid #fff3}
 .hero-facts>div{display:flex;flex-direction:column;gap:5px;padding:14px 20px 15px 0}
 .hero-facts strong{font-size:16px;font-weight:750;color:#fff}
