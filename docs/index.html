@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fafafa">
-  <meta name="description" content="红果短剧 Mac 版是非官方 macOS 桌面播放器。下载 v0.1.7 安装与播放补丁，查看安装说明与实机验证范围。">
+  <meta name="description" content="红果短剧 Mac 版是非官方 macOS 桌面播放器。下载 v0.1.8 Gatekeeper 与原生扩展加载补丁，查看安装说明与实机验证范围。">
   <link rel="canonical" href="https://strivetolearncode.github.io/hongguo-short-drama-macos/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="红果短剧 Mac 版">
-  <meta property="og:description" content="在 Mac 上打开即看、接着追剧。下载 v0.1.7 安装与播放补丁，了解本机诊断与安装限制。">
+  <meta property="og:description" content="在 Mac 上打开即看、接着追剧。下载 v0.1.8 Gatekeeper 与原生扩展加载补丁，了解本机诊断与安装限制。">
   <meta property="og:url" content="https://strivetolearncode.github.io/hongguo-short-drama-macos/">
   <meta property="og:image" content="https://strivetolearncode.github.io/hongguo-short-drama-macos/assets/recommend-latest.png">
   <title>红果短剧 Mac 版下载 | 非官方 macOS 短剧播放器</title>
@@ -27,7 +27,7 @@
         <a href="#install">安装说明</a>
         <a href="#about">项目说明</a>
       </nav>
-      <a class="header-download" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.7/HongguoMac-0.1.7-universal.dmg">下载 v0.1.7 <span aria-hidden="true">↓</span></a>
+      <a class="header-download" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/HongguoMac-0.1.8-universal.dmg">下载 v0.1.8 <span aria-hidden="true">↓</span></a>
     </div>
   </header>
 
@@ -39,11 +39,11 @@
           <p class="hero-lead"><strong>打开即看，</strong>续上你追的那一集。</p>
           <p class="hero-features">推荐连播 <span>·</span> 搜索与榜单 <span>·</span> 即时切画质 <span>·</span> 置顶小窗</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.7/HongguoMac-0.1.7-universal.dmg"><span aria-hidden="true">↓</span> 下载 v0.1.7</a>
+            <a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/HongguoMac-0.1.8-universal.dmg"><span aria-hidden="true">↓</span> 下载 v0.1.8</a>
             <a class="button button-secondary" href="#install">安装说明 <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-facts" aria-label="版本与验证信息">
-            <div><strong>v0.1.7</strong><span>最新正式版</span></div>
+            <div><strong>v0.1.8</strong><span>最新正式版</span></div>
             <div><strong>macOS 13+</strong><span>完整离线运行组件</span></div>
             <div><strong>Apple Silicon</strong><span>此前版本已验证播放</span></div>
           </div>
@@ -54,7 +54,7 @@
 
     <section class="release-band" id="release" aria-labelledby="release-title">
       <div class="wrap release-layout">
-        <div class="release-intro"><span class="release-version">本次更新 / v0.1.7</span><h2 id="release-title">首次安装与播放等待修复。</h2><p>首次安装直接使用内置 Python；搜索分季异步补充，播放流超时可重试。错误详情仍只保留在本机。</p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.7" class="release-detail" target="_blank" rel="noopener noreferrer">阅读完整更新说明 <span aria-hidden="true">↗</span></a></div>
+        <div class="release-intro"><span class="release-version">本次更新 / v0.1.8</span><h2 id="release-title">修复 macOS 原生运行组件加载。</h2><p>清理下载 DMG 解压后的运行时隔离属性，避免 Python 原生扩展被系统策略拒绝；保留架构缓存修复与失败回滚。错误详情仍只保留在本机。</p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.8" class="release-detail" target="_blank" rel="noopener noreferrer">阅读完整更新说明 <span aria-hidden="true">↗</span></a></div>
         <div class="release-points" aria-label="本次更新重点">
           <div><span>01</span><div><h3>绕开 uv 首装失败</h3><p>直接使用内置 Python 创建虚拟环境，保留原有缓存修复。</p></div></div>
           <div><span>02</span><div><h3>播放超时可重试</h3><p>流加载超过 90 秒时显示重试入口；分季结果不再阻塞搜索首屏。</p></div></div>
@@ -107,12 +107,12 @@
       <div class="wrap download-layout">
         <div><span class="eyebrow">Mac 下载</span><h2 id="download-title">准备好，打开下一集。</h2><p class="download-intro">下载完整安装包后拖入“应用程序”。首次启动只在本机配置内置组件，无需再下载运行环境。</p></div>
         <div class="download-panel">
-          <span class="release-kicker">正式版 · v0.1.7</span>
-          <strong>红果短剧 Mac 版 v0.1.7</strong>
-          <p>完整安装包内置 arm64 与 x86_64 运行组件；首装不再运行 uv，搜索与播放等待路径得到改善。物理 Intel 尚待实机验收。</p>
-          <a class="button button-primary download-button" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.7/HongguoMac-0.1.7-universal.dmg">下载 DMG 安装包 <span aria-hidden="true">↓</span></a>
-          <a class="button button-outline" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.7/SHA256SUMS.txt">下载校验文件 <span aria-hidden="true">↓</span></a>
-          <a class="mirror-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.7" target="_blank" rel="noopener noreferrer">查看版本说明 ↗</a>
+          <span class="release-kicker">正式版 · v0.1.8</span>
+          <strong>红果短剧 Mac 版 v0.1.8</strong>
+          <p>完整安装包内置 arm64 与 x86_64 运行组件；本补丁修复下载 DMG 后 Python 原生扩展被 macOS 系统策略拒绝加载的问题。物理 Intel 尚待实机验收。</p>
+          <a class="button button-primary download-button" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/HongguoMac-0.1.8-universal.dmg">下载 DMG 安装包 <span aria-hidden="true">↓</span></a>
+          <a class="button button-outline" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.8/SHA256SUMS.txt">下载校验文件 <span aria-hidden="true">↓</span></a>
+          <a class="mirror-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.8" target="_blank" rel="noopener noreferrer">查看版本说明 ↗</a>
           <small>安装包约 300 MiB · 首次安装无需下载组件 · M5/macOS 26 与物理 Intel 待实机验证</small>
           <p>旧版检查更新失败？可直接下载 DMG 覆盖安装；本机收藏、历史与观看位置会保留。</p>
         </div>
