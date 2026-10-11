@@ -2,15 +2,17 @@
 
 <img src="assets/icon.png" alt="红果短剧 Mac 版图标" width="88">
 
-# 红果短剧 Mac 版
+# 红果短剧 Mac 版（非官方）
 
-**非官方 macOS 桌面播放器 · 打开即看 · 历史续播**
+**macOS 短剧播放器 · Mac 下载与安装说明 · 历史续播**
 
 [下载 v0.1.10 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.10/HongguoMac-0.1.10-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.1.10/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
 **觉得这个项目不错？** 欢迎点击仓库右上角的 **Star** 支持我们继续完善。Star 完全自愿，不影响下载或使用。
+
+想在 Mac 上看短剧？这里提供红果短剧 Mac 版（非官方）的 macOS 安装包、应用截图、安装说明和问题反馈。支持 macOS 13 及以上，Apple Silicon 已实测；物理 Intel Mac 仍待实机验收。
 
 这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和 Windows 原发行者没有维护关系。此仓库用于发行与反馈，不包含客户端源码；v0.1.10 安装包内置首次运行所需的第三方组件。
 
