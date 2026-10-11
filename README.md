@@ -16,11 +16,21 @@
 
 这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和 Windows 原发行者没有维护关系。此仓库用于发行与反馈，不包含客户端源码；v0.1.10 安装包内置首次运行所需的第三方组件。
 
+## v0.2.0 候选版与界面视频
+
+**v0.2.0-rc1 已开放体验，v0.1.10 仍是稳定版。** 新版观看达到一集后自动从上下切剧进入上下切集；左上角返回推荐，切换时不自动展开选集。视频旁的操作随窗口定位，收藏上方只读展示来源提供的播放量、热度或追剧人数；没有数据时不会编造数值。
+
+[下载 v0.2.0-rc1 候选 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0-rc1/HongguoMac-0.2.0-rc1-universal.dmg) · [核对 SHA-256](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0-rc1/SHA256SUMS.txt) · [阅读候选说明](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.0-rc1)
+
+[![v0.2.0 界面演示视频封面](docs/assets/v0.2.0-video-poster.png)](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0-rc1/HongguoMac-0.2.0-intro.mp4)
+
+[观看 18 秒界面演示视频](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0-rc1/HongguoMac-0.2.0-intro.mp4) · 静音演示，剧集与热度为示例数据。实际播放器在 Apple Silicon / macOS 15.3.1 的 WKWebView 中已验证；物理 Intel、M5/macOS 26、macOS 13 和全新账户仍待完整验收。候选版不会通过应用内稳定更新检查推送。
+
 **v0.1.10 更新：**新增本机追剧列表与手动检查、完整标题核对后选择其他季、长选集定位和最高 3 倍速。设置提供手动诊断摘要；升级后展示一次更新说明，确认后同版本不再弹出。更新下载区分已传输量与校验阶段。覆盖安装保留收藏、历史和观看进度；物理 Intel Mac 仍待实机验收。
 
 **旧版检查更新失败？** 已安装的旧逻辑无法远程修复。直接从本页下载 v0.1.10 DMG，拖入“应用程序”覆盖安装一次；之后可使用新版的备用检查来源。
 
-![当前版本的推荐播放界面](docs/assets/recommend-latest.png)
+![v0.1.10 稳定版的推荐播放界面](docs/assets/recommend-latest.png)
 
 ## 当前功能
 
