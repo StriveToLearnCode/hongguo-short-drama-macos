@@ -6,7 +6,7 @@
 
 **macOS 短剧播放器 · Mac 下载与安装说明 · 历史续播**
 
-[下载 v0.2.0 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v0.2.1 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.1/HongguoMac-0.2.1-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.1/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -14,11 +14,17 @@
 
 想在 Mac 上看短剧？这里提供红果短剧 Mac 版（非官方）的 macOS 安装包、应用截图、安装说明和问题反馈。支持 macOS 13 及以上，Apple Silicon 已实测；物理 Intel Mac 仍待实机验收。
 
-这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和 Windows 原发行者没有维护关系。此仓库用于发行与反馈，不包含客户端源码；v0.2.0 安装包内置首次运行所需的第三方组件。
+这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和 Windows 原发行者没有维护关系。此仓库用于发行与反馈，不包含客户端源码；v0.2.1 安装包内置首次运行所需的第三方组件。
 
-## v0.2.0 正式版与真实 App 演示
+## v0.2.1 播放兼容性修复
 
-**v0.2.0 已进入稳定更新通道。** 观看达到一集后自动从上下切剧进入上下切集；左上角返回推荐，切换时不自动展开选集。视频旁的操作随窗口定位，收藏上方只读展示来源提供的播放量、热度或追剧人数；没有数据时不会编造数值。
+**v0.2.1 是最新稳定版。** 默认完整准备视频，减少渐进播放失败后的重复视频地址请求；内容源返回异常内容时明确提示。安装就绪标记现包含后端源码指纹，升级或回退会重建对应服务，保留本机收藏、历史和观看位置。片源持续无法返回视频地址时，客户端仍不能保证播放。
+
+[下载 v0.2.1 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.1/HongguoMac-0.2.1-universal.dmg) · [核对 SHA-256](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.1/SHA256SUMS.txt) · [版本说明](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.1)
+
+## v0.2.0 真实 App 演示
+
+v0.2.0 的画面更新仍保留在 v0.2.1 中：观看达到一集后自动从上下切剧进入上下切集；左上角返回推荐，切换时不自动展开选集。视频旁的操作随窗口定位，收藏上方只读展示来源提供的播放量、热度或追剧人数；没有数据时不会编造数值。
 
 [下载 v0.2.0 正式 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-universal.dmg) · [核对 SHA-256](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/SHA256SUMS.txt) · [阅读版本说明](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.0)
 
@@ -28,7 +34,7 @@
 
 **v0.1.10 更新：**新增本机追剧列表与手动检查、完整标题核对后选择其他季、长选集定位和最高 3 倍速。设置提供手动诊断摘要；升级后展示一次更新说明，确认后同版本不再弹出。更新下载区分已传输量与校验阶段。覆盖安装保留收藏、历史和观看进度；物理 Intel Mac 仍待实机验收。
 
-**旧版检查更新失败？** 已安装的旧逻辑无法远程修复。直接从本页下载 v0.2.0 DMG，拖入“应用程序”覆盖安装一次；之后可使用新版的备用检查来源。
+**旧版检查更新失败？** 已安装的旧逻辑无法远程修复。直接从本页下载 v0.2.1 DMG，拖入“应用程序”覆盖安装一次；之后可使用新版的备用检查来源。
 
 ![v0.1.10 稳定版的推荐播放界面](docs/assets/recommend-latest.png)
 
@@ -61,9 +67,9 @@
 
 ## 安装
 
-**v0.2.0 已完成自动化回归、双架构构建和安装包校验，并在 Apple Silicon / macOS 15.3.1 的隔离数据目录验收实际播放与界面。**安装包包含 arm64 与 x86_64 应用及运行组件；全新账户的完整播放、M5/macOS 26、物理 Intel Mac 和 macOS 13 仍待实机验证。
+**v0.2.1 已完成自动化回归、双架构构建和安装包校验，并在 Apple Silicon / macOS 15.3.1 的隔离数据目录验收播放与后端重建。**安装包包含 arm64 与 x86_64 应用及运行组件；全新账户的完整播放、M5/macOS 26、物理 Intel Mac 和 macOS 13 仍待实机验证。
 
-1. 下载 [`HongguoMac-0.2.0-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-universal.dmg)，与同版的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/SHA256SUMS.txt) 对照。DMG 的 SHA-256 应为 `dcce4328c8790ba447816202d68df69fb2f5720fe7eab63acdbb2940f337b974`。
+1. 下载 [`HongguoMac-0.2.1-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.1/HongguoMac-0.2.1-universal.dmg)，与同版的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.1/SHA256SUMS.txt) 对照。DMG 的 SHA-256 应为 `ffd7fb999430189d657129e19c826bb05c5a894f8f1d009a9469f4c584930157`。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”。
 3. 从“应用程序”启动。本版采用临时签名，尚未经过 Apple 公证。如果系统**仅提示无法验证开发者**，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并[反馈](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)；不要关闭系统防护。
 4. 首次启动会从安装包在本机配置 Python、Java 和内容服务，完成后自动进入推荐页；安装运行环境不需要联网，搜索和播放仍需联网。
