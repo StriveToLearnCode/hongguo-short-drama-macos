@@ -6,7 +6,7 @@
 
 **macOS 短剧播放器 · Mac 下载与安装说明 · 历史续播**
 
-[下载 v0.2.2 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.2/HongguoMac-0.2.2-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.2/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v0.2.3 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.3/HongguoMac-0.2.3-universal.dmg) · [下载页](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.3/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -14,11 +14,21 @@
 
 想在 Mac 上看短剧？这里提供红果短剧 Mac 版（非官方）的 macOS 安装包、应用截图、安装说明和问题反馈。支持 macOS 13 及以上，Apple Silicon 已实测；物理 Intel Mac 仍待实机验收。
 
-这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和 Windows 原发行者没有维护关系。此仓库用于发行与反馈，不包含客户端源码；v0.2.2 安装包内置首次运行所需的第三方组件。
+这是由 `StriveToLearnCode` 独立维护的 Mac 客户端，与红果短剧官方和 Windows 原发行者没有维护关系。此仓库用于发行与反馈，不包含客户端源码；v0.2.3 安装包内置首次运行所需的第三方组件。
+
+## v0.2.3 启动恢复、找剧与小窗
+
+**v0.2.3 是最新稳定版。** 本机服务启动时意外退出会清理并重试一次；应用运行时检查已预约剧季的新集。新增逐步建立的本机剧目索引，在线搜索首屏失败时可显示明确标记的部分结果并重试。推荐流优先寻找未展示、未观看内容，但可能增加有上限的目录请求。
+
+小窗去掉顶部白边，可从顶部透明区域拖动；置顶、恢复按钮移到底部并自动收起。点击应用内“下载更新”后，首页横幅会显示下载进度、校验和保存结果，失败可重试。
+
+已知限制：部分剧目的新季检查仍可能因来源搜索分页未收敛而失败，不会以不完整结果覆盖预约基线。没有完成与 v0.2.2 同片源、同画质的 CPU 和首帧对照测试，不宣称播放提速或 CPU 占用下降。
+
+[下载 v0.2.3 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.3/HongguoMac-0.2.3-universal.dmg) · [核对 SHA-256](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.3/SHA256SUMS.txt) · [版本说明](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.3)
 
 ## v0.2.2 播放切换与故障归因
 
-**v0.2.2 是最新稳定版。** 切集和切画质的完整准备失败时，不再重复请求同一地址，当前播放保持不变；视频地址和 CDN 请求的 HTTP 异常按来源阶段归类。匿名播放尝试保留起始传输方式。片源持续不可用时客户端仍无法保证播放。
+v0.2.2 切集和切画质的完整准备失败时，不再重复请求同一地址，当前播放保持不变；视频地址和 CDN 请求的 HTTP 异常按来源阶段归类。匿名播放尝试保留起始传输方式。片源持续不可用时客户端仍无法保证播放。
 
 已知限制：部分剧目的追剧更新检查可能因来源搜索分页未收敛而失败；不会以不完整结果覆盖追剧基线。完整追剧流程和物理 Intel 等设备仍待验收。
 
@@ -32,7 +42,7 @@ v0.2.1 默认完整准备视频，减少渐进播放失败后的重复视频地�
 
 ## v0.2.0 真实 App 演示
 
-v0.2.0 的画面更新仍保留在 v0.2.2 中：观看达到一集后自动从上下切剧进入上下切集；左上角返回推荐，切换时不自动展开选集。视频旁的操作随窗口定位，收藏上方只读展示来源提供的播放量、热度或追剧人数；没有数据时不会编造数值。
+v0.2.0 的画面更新仍保留在 v0.2.3 中：观看达到一集后自动从上下切剧进入上下切集；左上角返回推荐，切换时不自动展开选集。视频旁的操作随窗口定位，收藏上方只读展示来源提供的播放量、热度或追剧人数；没有数据时不会编造数值。
 
 [下载 v0.2.0 正式 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-universal.dmg) · [核对 SHA-256](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/SHA256SUMS.txt) · [阅读版本说明](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.0)
 
@@ -42,7 +52,7 @@ v0.2.0 的画面更新仍保留在 v0.2.2 中：观看达到一集后自动从�
 
 **v0.1.10 更新：**新增本机追剧列表与手动检查、完整标题核对后选择其他季、长选集定位和最高 3 倍速。设置提供手动诊断摘要；升级后展示一次更新说明，确认后同版本不再弹出。更新下载区分已传输量与校验阶段。覆盖安装保留收藏、历史和观看进度；物理 Intel Mac 仍待实机验收。
 
-**旧版检查更新失败？** 已安装的旧逻辑无法远程修复。直接从本页下载 v0.2.2 DMG，拖入“应用程序”覆盖安装一次；之后可使用新版的备用检查来源。
+**旧版检查更新失败？** 已安装的旧逻辑无法远程修复。直接从本页下载 v0.2.3 DMG，拖入“应用程序”覆盖安装一次；之后可使用新版的备用检查来源。
 
 ![v0.1.10 稳定版的推荐播放界面](docs/assets/recommend-latest.png)
 
@@ -51,16 +61,16 @@ v0.2.0 的画面更新仍保留在 v0.2.2 中：观看达到一集后自动从�
 **打开就看**
 
 - 启动进入推荐播放；上下切换剧目，同一部剧播完后自动接下一集。
-- 推荐流继续加载后续内容，并尽量避开近 24 小时已展示的剧；本机收藏和有效观看记录可参与轻量重排，没有偏好信号时沿用上游顺序。偏好不上传。
+- 推荐流继续加载后续内容，并尽量避开近期已展示或观看过的剧；本机收藏和观看记录可参与轻量重排。寻找新剧目时会有限向前查询，偏好不上传。
 - 搜索剧名或演员，浏览热播、推荐和新剧榜，结果可直接进入播放器。
 
-**连续追剧**
+**连续观看与预约**
 
 - 选集侧栏显示简介、分组和指定集数定位，并保留已识别关联季的入口；收藏、历史、集数与观看位置保存在本机。
 - “查找其他季”按标题提供候选及完整标题，需自行核对并手动选择；从所选条目的第 1 集开始。候选可能遗漏或误匹配，查找期间保留当前播放，切换失败保留原媒体和已存进度。
-- 本机追剧列表支持手动检查新季、新集并标记已知晓；后台通知需自行授权，追剧与收藏、历史相互独立。
+- 本机预约列表在应用运行时约每分钟检查已知剧季的新集，新季仍定期检查；也可手动检查和标记已知晓。后台通知需自行授权，预约与收藏、历史相互独立。
 - 播放中切换最高画质、1080p、720p、540p、360p；具体可用画质取决于片源，切换失败会保留原播放。
-- 最高 3 倍速、全屏、置顶小窗与键盘快捷操作；弹幕可随时开关。
+- 最高 3 倍速、全屏、可拖动及临时置顶的小窗与键盘快捷操作；弹幕可随时开关。
 - 中断后重试并尝试其他画质；针对部分 HE-AACv2 音轨做兼容处理。
 - 下一集预加载默认开启以减少切集等待；低配机器或流量敏感时可在设置中关闭。
 - 深色、浅色或跟随系统；应用内反馈、使用帮助与新版本提示。
@@ -75,14 +85,14 @@ v0.2.0 的画面更新仍保留在 v0.2.2 中：观看达到一集后自动从�
 
 ## 安装
 
-**v0.2.2 已完成自动化回归、双架构构建和安装包校验，并在 Apple Silicon / macOS 15.3.1 的隔离数据目录验收实际播放与后端重建。**安装包包含 arm64 与 x86_64 应用及运行组件；完整追剧检查、全新账户、M5/macOS 26、物理 Intel Mac 和 macOS 13 仍待验收。
+**v0.2.3 已完成自动化回归、双架构构建和安装包校验，并在 Apple Silicon / macOS 15.3.1 的隔离数据目录验收实际播放与小窗切换。**安装包包含 arm64 与 x86_64 应用及运行组件；完整预约流程、全新账户、M5/macOS 26、物理 Intel Mac 和 macOS 13 仍待验收。
 
-1. 下载 [`HongguoMac-0.2.2-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.2/HongguoMac-0.2.2-universal.dmg)，与同版的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.2/SHA256SUMS.txt) 对照。DMG 的 SHA-256 应为 `8c3610d36ea3ffebf53150c0e9c40181dac085579492ba7098e2b8864f7d6393`。
+1. 下载 [`HongguoMac-0.2.3-universal.dmg`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.3/HongguoMac-0.2.3-universal.dmg)，与同版的 [`SHA256SUMS.txt`](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.3/SHA256SUMS.txt) 对照。DMG 的 SHA-256 应为 `a3208b5d1a902f21b24a2d9238c3f8c0822b3db42575c87e5aab33c07beccecf`。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”。
 3. 从“应用程序”启动。本版采用临时签名，尚未经过 Apple 公证。如果系统**仅提示无法验证开发者**，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并[反馈](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)；不要关闭系统防护。
 4. 首次启动会从安装包在本机配置 Python、Java 和内容服务，完成后自动进入推荐页；安装运行环境不需要联网，搜索和播放仍需联网。
 
-应用会检查正式发行版。取得可信校验摘要时可在应用内下载并校验 DMG，再由用户选择保存位置并手动覆盖安装；旧版清单缺少校验信息时仍打开下载页。本次运行内仅在服务器范围请求及文件标识核对通过时尝试续传，退出后不保留临时下载进度。下载提示变化不代表提速，SHA-256 校验也不等于发布者代码签名。
+应用会检查正式发行版。取得可信校验摘要时可在应用内下载并校验 DMG；首页横幅显示下载量、进度、校验与保存状态，再由用户选择保存位置并手动覆盖安装。旧版清单缺少校验信息时仍打开下载页。本次运行内仅在服务器范围请求及文件标识核对通过时尝试续传，退出后不保留临时下载进度。下载提示变化不代表提速，SHA-256 校验也不等于发布者代码签名。
 
 ## 常见问题
 
