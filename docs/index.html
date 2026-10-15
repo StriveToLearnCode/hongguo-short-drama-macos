@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="teUMtnI5owoaMWVGNS_taykZEti-OWMDkgmN19amek8">
-  <meta name="theme-color" content="#fafafa">
-  <meta name="description" content="下载红果短剧 Mac 版（非官方）v0.2.9，适用于 macOS 13 及以上。核对实际高清缓存，改善画质切换、来源恢复和续播；覆盖安装保留本机观看记录。">
+  <meta name="theme-color" content="#101015">
+  <meta name="description" content="下载红果短剧 Mac 版（非官方）v0.2.9，适用于 macOS 13 及以上。查看真实 App 演示、安装说明与 DMG；支持推荐连播、在线找剧、分季切换和本机续播。">
   <link rel="canonical" href="https://strivetolearncode.github.io/hongguo-short-drama-macos/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="红果短剧 Mac 版（非官方）">
   <meta property="og:title" content="红果短剧 Mac 版下载（非官方）｜macOS 短剧播放器">
-  <meta property="og:description" content="查看红果短剧 Mac 版 v0.2.9 的播放修复与 DMG 下载。覆盖安装保留收藏、历史和观看位置；非官方项目，尚未经过 Apple 公证。">
+  <meta property="og:description" content="查看红果短剧 Mac 版 v0.2.9 的安装说明、真实 App 演示与 DMG 下载。macOS 13+；非官方项目，尚未经过 Apple 公证。">
   <meta property="og:url" content="https://strivetolearncode.github.io/hongguo-short-drama-macos/">
   <meta property="og:image" content="https://strivetolearncode.github.io/hongguo-short-drama-macos/assets/recommend-latest.png">
   <meta property="og:image:alt" content="红果短剧 Mac 版推荐播放界面">
   <meta name="twitter:card" content="summary_large_image">
   <title>红果短剧 Mac 版下载（非官方）｜macOS 短剧播放器</title>
-  <link rel="icon" href="assets/icon.png">
+  <link rel="icon" href="assets/icon-web.png">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
@@ -33,138 +33,149 @@
   }
   </script>
   <script defer src="funnel.js"></script>
+  <script defer src="site.js"></script>
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"c4aa7e0787df407584f252cbe8de7bca"}'></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">跳至正文</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="红果短剧 Mac 版首页"><img src="assets/icon.png" alt=""><span>红果短剧 <small>Mac 版</small></span></a>
-      <nav aria-label="页面导航">
-        <a href="#release">本次更新</a>
-        <a href="#screenshots">应用截图</a>
-        <a href="#features">功能</a>
-        <a href="#install">安装说明</a>
-        <a href="#about">项目说明</a>
+      <a class="brand" href="#top" aria-label="红果短剧 Mac 版首页"><img src="assets/icon-web.png" width="34" height="34" alt=""><span>红果短剧 <small>Mac 版</small></span></a>
+      <button class="menu-toggle" type="button" aria-label="展开导航" aria-controls="site-nav" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="#catalog" aria-current="page">发现好剧</a><a href="#screenshots">Mac 客户端</a><a href="#install">安装指南</a>
       </nav>
-      <a class="header-download" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg">下载 v0.2.9 <span aria-hidden="true">↓</span></a>
+      <form class="site-search" role="search">
+        <label class="sr-only" for="drama-search">搜索本页短剧</label>
+        <input id="drama-search" type="search" placeholder="搜剧名，找下一段故事" autocomplete="off" maxlength="100" aria-describedby="search-help">
+        <button type="submit" aria-label="搜索本页短剧"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg></button>
+        <span id="search-help" class="sr-only">搜索本页展示的剧名或题材，按回车查看结果。</span>
+      </form>
+      <a class="header-download" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg>下载 Mac 版</a>
     </div>
   </header>
-
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap hero-inner">
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-layout">
         <div class="hero-copy">
-          <h1 id="hero-title">红果短剧 Mac 版</h1>
-          <p class="hero-lead"><strong>打开即看，</strong>续上你追的那一集。</p>
-          <p class="hero-features">推荐连播 <span>·</span> 搜索与榜单 <span>·</span> 即时切画质 <span>·</span> 置顶小窗</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg"><span aria-hidden="true">↓</span> 下载 v0.2.9</a>
-            <a class="button button-secondary" href="#install">安装说明 <span aria-hidden="true">↗</span></a>
+          <div class="hero-brand"><img src="assets/icon-web.png" width="27" height="27" alt=""><span>红果短剧 · Mac 版</span></div>
+          <h1 id="hero-title">好故事，<span>在 Mac 上<em>继续。</em></span></h1>
+          <p class="hero-lead">把手机里的追剧时光，搬到更大的屏幕。<br>推荐、找剧、连播，在 Mac 上一样顺手。</p>
+          <div class="hero-actions"><a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg> 下载 Mac 版</a><a class="hero-guide" href="#screenshots">看看客户端 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></div>
+          <p class="hero-status">v0.2.9 · macOS 13+ · Apple Silicon / Intel 通用包</p>
+          <div class="hero-links"><a href="#install">安装指南 ↗</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">GitHub 点个 Star ↗</a></div>
+          <p class="hero-note">非官方社区项目 · 尚未经过 Apple 公证</p>
+        </div>
+        <div class="hero-showcase" aria-label="精选剧目，点击前往官网">
+          <div class="hero-posters">
+        <a class="spotlight" href="https://hongguoduanju.com/detail?series_id=7694896136963755032" target="_blank" rel="noopener noreferrer" aria-label="在红果官网查看雾锁情迷"><div class="spotlight-image"><img src="assets/posters/7694896136963755032.webp" alt="雾锁情迷" width="420" height="600" fetchpriority="high"><span class="spotlight-type">都市情感</span></div><h2>雾锁情迷</h2><p>爱情 · 全73集</p></a>
+        <a class="spotlight" href="https://hongguoduanju.com/detail?series_id=7686713195246930968" target="_blank" rel="noopener noreferrer" aria-label="在红果官网查看首辅娇娘"><div class="spotlight-image"><img src="assets/posters/7686713195246930968.webp" alt="首辅娇娘" width="420" height="600" fetchpriority="high"><span class="spotlight-type">古风爱情</span></div><h2>首辅娇娘</h2><p>爱情 · 全69集</p></a>
+        <a class="spotlight" href="https://hongguoduanju.com/detail?series_id=7692463987333532697" target="_blank" rel="noopener noreferrer" aria-label="在红果官网查看魔神人生：弃子问天第一季"><div class="spotlight-image"><img src="assets/posters/7692463987333532697.webp" alt="魔神人生：弃子问天第一季" width="420" height="600" fetchpriority="high"><span class="spotlight-type">热血漫剧</span></div><h2>魔神人生：弃子问天第一季</h2><p>脑洞 · 全515集</p></a>
           </div>
-          <p class="hero-star">觉得这个项目不错？<a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> 去 GitHub 点个 Star 支持我们</a></p>
-          <div class="hero-facts" aria-label="版本与验证信息">
-            <div><strong>v0.2.9</strong><span>最新正式版</span></div>
-            <div><strong>macOS 13+</strong><span>完整离线运行组件</span></div>
-            <div><strong>Apple Silicon</strong><span>已验证离线升级</span></div>
-          </div>
-          <p class="hero-meta">非官方项目 · 尚未经过 Apple 公证 · M5/macOS 26、物理 Intel 与 macOS 13 尚待实机验证</p>
+          <p class="showcase-caption">每种心情，都有一段好故事。</p>
         </div>
       </div>
     </section>
+    <div class="wrap benefit-strip" aria-label="Mac 播放体验">
+      <a href="#screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><div><strong>大屏，看个过瘾</strong><span>画质随手切，故事更沉浸</span></div></a>
+      <a href="#screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 10 7-10 7zM21 5v14M3 5v14"/></svg><div><strong>下一集，自然接上</strong><span>自动连播，本机保存进度</span></div></a>
+      <a href="#screenshots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="17" rx="2"/><rect x="12" y="11" width="7" height="6" rx="1"/></svg><div><strong>小窗，也有好故事</strong><span>边做其他事，边追下一集</span></div></a>
+    </div>
 
-    <section class="release-band" id="release" aria-labelledby="release-title">
-      <div class="wrap release-layout">
-        <div class="release-intro"><span class="release-version">本次更新 / v0.2.9</span><h2 id="release-title">找剧恢复，继续追剧。</h2><p>v0.2.9 合并官网搜索与名称检索，修复“暂时无法搜索”与选剧下拉框的相关季匹配。新安装也能在线找剧；部分来源失败时保留可用结果，公开搜索范围有限时明确提示。覆盖安装保留本机记录。</p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.9" class="release-detail" target="_blank" rel="noopener noreferrer">阅读完整更新说明 <span aria-hidden="true">↗</span></a></div>
-        <div class="release-points" aria-label="本次更新重点">
-          <div><span>01</span><div><h3>恢复在线搜索</h3><p>合并官网搜索与名称检索，不依赖本机已收录剧目才能搜索。</p></div></div>
-          <div><span>02</span><div><h3>其他季重新匹配</h3><p>选剧下拉框同步接入新搜索，查找失败可重试，不用有限结果覆盖预约基线。</p></div></div>
-          <div><span>03</span><div><h3>失败原因可诊断</h3><p>摘要增加搜索失败原因码，不上传搜索词；升级保留收藏、历史和设置。</p></div></div>
+    <section class="wrap catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-heading"><h2 id="catalog-title">今晚，想看哪一种？</h2><p>精选剧目 · 点击前往官网查看</p></div>
+      <div class="catalog-toolbar">
+        <div class="filters" role="group" aria-label="筛选剧目类型"><button type="button" data-filter="all" aria-pressed="true">全部</button><button type="button" data-filter="real" aria-pressed="false">真人短剧</button><button type="button" data-filter="comic" aria-pressed="false">漫剧</button><button type="button" data-filter="ai" aria-pressed="false">AI 剧</button></div>
+        <p class="catalog-status" id="catalog-status" role="status" aria-live="polite">显示 18 部剧目 · 页面样例，非实时榜单</p>
+      </div>
+      <div class="search-summary" id="search-summary" hidden><span id="search-query"></span><button class="clear-search" type="button" data-clear-search>清除搜索</button></div>
+      <section class="drama-section" data-category="real" aria-labelledby="real-title"><div class="row-heading"><h3 id="real-title">生活里的另一种可能</h3><span>都市情感 · 古风爱情 · 家庭故事</span></div><div class="drama-grid">
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7686713195246930968" target="_blank" rel="noopener noreferrer" data-category="real" data-title="首辅娇娘" data-tags="爱情 / 古风爱情 / 先婚后爱" aria-label="在红果官网查看首辅娇娘"><div class="cover"><img src="assets/posters/7686713195246930968.webp" width="420" height="600" alt="首辅娇娘" loading="lazy" decoding="async"><span class="episodes">全69集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>首辅娇娘</h4><p>爱情 / 古风爱情 / 先婚后爱</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7694896136963755032" target="_blank" rel="noopener noreferrer" data-category="real" data-title="雾锁情迷" data-tags="爱情 / 都市爱情 / 日久生情" aria-label="在红果官网查看雾锁情迷"><div class="cover"><img src="assets/posters/7694896136963755032.webp" width="420" height="600" alt="雾锁情迷" loading="lazy" decoding="async"><span class="episodes">全73集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>雾锁情迷</h4><p>爱情 / 都市爱情 / 日久生情</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7693823855940357144" target="_blank" rel="noopener noreferrer" data-category="real" data-title="京夜诱温" data-tags="爱情 / 都市爱情 / 日久生情" aria-label="在红果官网查看京夜诱温"><div class="cover"><img src="assets/posters/7693823855940357144.webp" width="420" height="600" alt="京夜诱温" loading="lazy" decoding="async"><span class="episodes">全68集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>京夜诱温</h4><p>爱情 / 都市爱情 / 日久生情</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7689322645132692542" target="_blank" rel="noopener noreferrer" data-category="real" data-title="今天有朵云爱我" data-tags="爱情 / 都市爱情 / 日久生情" aria-label="在红果官网查看今天有朵云爱我"><div class="cover"><img src="assets/posters/7689322645132692542.webp" width="420" height="600" alt="今天有朵云爱我" loading="lazy" decoding="async"><span class="episodes">全66集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>今天有朵云爱我</h4><p>爱情 / 都市爱情 / 日久生情</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7691231671529524249" target="_blank" rel="noopener noreferrer" data-category="real" data-title="分手四年，傅机长失了控" data-tags="爱情 / 都市爱情 / 故人重逢" aria-label="在红果官网查看分手四年，傅机长失了控"><div class="cover"><img src="assets/posters/7691231671529524249.webp" width="420" height="600" alt="分手四年，傅机长失了控" loading="lazy" decoding="async"><span class="episodes">全88集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>分手四年，傅机长失了控</h4><p>爱情 / 都市爱情 / 故人重逢</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7691229866846325822" target="_blank" rel="noopener noreferrer" data-category="real" data-title="妹妹博士毕业宴上，我成了外人" data-tags="家庭 / 家庭伦理 / 小人物" aria-label="在红果官网查看妹妹博士毕业宴上，我成了外人"><div class="cover"><img src="assets/posters/7691229866846325822.webp" width="420" height="600" alt="妹妹博士毕业宴上，我成了外人" loading="lazy" decoding="async"><span class="episodes">全70集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>妹妹博士毕业宴上，我成了外人</h4><p>家庭 / 家庭伦理 / 小人物</p></a>
+        </div></section>
+      <section class="drama-section" data-category="comic" aria-labelledby="comic-title"><div class="row-heading"><h3 id="comic-title">想象力，不必设限</h3><span>热血冒险 · 奇幻世界 · 穿越人生</span></div><div class="drama-grid">
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7692463987333532697" target="_blank" rel="noopener noreferrer" data-category="comic" data-title="魔神人生：弃子问天第一季" data-tags="脑洞 / 穿越 / 系统" aria-label="在红果官网查看魔神人生：弃子问天第一季"><div class="cover"><img src="assets/posters/7692463987333532697.webp" width="420" height="600" alt="魔神人生：弃子问天第一季" loading="lazy" decoding="async"><span class="episodes">全515集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>魔神人生：弃子问天第一季</h4><p>脑洞 / 穿越 / 系统</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7695709445933763646" target="_blank" rel="noopener noreferrer" data-category="comic" data-title="天幕直播：古人每周来我家第四季" data-tags="脑洞 / 穿越 / 系统" aria-label="在红果官网查看天幕直播：古人每周来我家第四季"><div class="cover"><img src="assets/posters/7695709445933763646.webp" width="420" height="600" alt="天幕直播：古人每周来我家第四季" loading="lazy" decoding="async"><span class="episodes">全187集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>天幕直播：古人每周来我家第四季</h4><p>脑洞 / 穿越 / 系统</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7691228619774905368" target="_blank" rel="noopener noreferrer" data-category="comic" data-title="聚宝仙盆之杂灵根才是真BOSS第十三季" data-tags="玄幻 / 逆袭 / 修真" aria-label="在红果官网查看聚宝仙盆之杂灵根才是真BOSS第十三季"><div class="cover"><img src="assets/posters/7691228619774905368.webp" width="420" height="600" alt="聚宝仙盆之杂灵根才是真BOSS第十三季" loading="lazy" decoding="async"><span class="episodes">全222集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>聚宝仙盆之杂灵根才是真BOSS第十三季</h4><p>玄幻 / 逆袭 / 修真</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7688646466708966462" target="_blank" rel="noopener noreferrer" data-category="comic" data-title="家有五女，穿越来的他连夜搞事业啦" data-tags="剧情 / 穿越 / 逆袭" aria-label="在红果官网查看家有五女，穿越来的他连夜搞事业啦"><div class="cover"><img src="assets/posters/7688646466708966462.webp" width="420" height="600" alt="家有五女，穿越来的他连夜搞事业啦" loading="lazy" decoding="async"><span class="episodes">全1000集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>家有五女，穿越来的他连夜搞事业啦</h4><p>剧情 / 穿越 / 逆袭</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7685699444766952473" target="_blank" rel="noopener noreferrer" data-category="comic" data-title="帐中香" data-tags="恋爱 / 古代" aria-label="在红果官网查看帐中香"><div class="cover"><img src="assets/posters/7685699444766952473.webp" width="420" height="600" alt="帐中香" loading="lazy" decoding="async"><span class="episodes">全250集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>帐中香</h4><p>恋爱 / 古代</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7691938290202577944" target="_blank" rel="noopener noreferrer" data-category="comic" data-title="公路求生榜一说她要走到公路尽头" data-tags="脑洞 / 求生 / 重生" aria-label="在红果官网查看公路求生榜一说她要走到公路尽头"><div class="cover"><img src="assets/posters/7691938290202577944.webp" width="420" height="600" alt="公路求生榜一说她要走到公路尽头" loading="lazy" decoding="async"><span class="episodes">全132集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>公路求生榜一说她要走到公路尽头</h4><p>脑洞 / 求生 / 重生</p></a>
+        </div></section>
+      <section class="drama-section" data-category="ai" aria-labelledby="ai-title"><div class="row-heading"><h3 id="ai-title">新的画面，新的故事</h3><span>AI 剧目 · 换一种方式入戏</span></div><div class="drama-grid">
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7692043430955863102" target="_blank" rel="noopener noreferrer" data-category="ai" data-title="反向拿捏：和闺蜜穿七零带着婆婆一起离" data-tags="剧情 / 穿越 / 逆袭" aria-label="在红果官网查看反向拿捏：和闺蜜穿七零带着婆婆一起离"><div class="cover"><img src="assets/posters/7692043430955863102.webp" width="420" height="600" alt="反向拿捏：和闺蜜穿七零带着婆婆一起离" loading="lazy" decoding="async"><span class="episodes">全126集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>反向拿捏：和闺蜜穿七零带着婆婆一起离</h4><p>剧情 / 穿越 / 逆袭</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7690494161551625241" target="_blank" rel="noopener noreferrer" data-category="ai" data-title="灾年逆袭：我靠穿越养全家" data-tags="脑洞 / 穿越 / 系统" aria-label="在红果官网查看灾年逆袭：我靠穿越养全家"><div class="cover"><img src="assets/posters/7690494161551625241.webp" width="420" height="600" alt="灾年逆袭：我靠穿越养全家" loading="lazy" decoding="async"><span class="episodes">全100集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>灾年逆袭：我靠穿越养全家</h4><p>脑洞 / 穿越 / 系统</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7691615145977449496" target="_blank" rel="noopener noreferrer" data-category="ai" data-title="持械入宋：第八季" data-tags="脑洞 / 穿越 / 古代" aria-label="在红果官网查看持械入宋：第八季"><div class="cover"><img src="assets/posters/7691615145977449496.webp" width="420" height="600" alt="持械入宋：第八季" loading="lazy" decoding="async"><span class="episodes">全100集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>持械入宋：第八季</h4><p>脑洞 / 穿越 / 古代</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7690596204589091864" target="_blank" rel="noopener noreferrer" data-category="ai" data-title="一块钱硬币，玩出万亿商业帝国" data-tags="脑洞 / 异能 / 逆袭" aria-label="在红果官网查看一块钱硬币，玩出万亿商业帝国"><div class="cover"><img src="assets/posters/7690596204589091864.webp" width="420" height="600" alt="一块钱硬币，玩出万亿商业帝国" loading="lazy" decoding="async"><span class="episodes">全298集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>一块钱硬币，玩出万亿商业帝国</h4><p>脑洞 / 异能 / 逆袭</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7690865236810681369" target="_blank" rel="noopener noreferrer" data-category="ai" data-title="玄门千金，万煞臣服" data-tags="玄幻 / 异能 / 都市" aria-label="在红果官网查看玄门千金，万煞臣服"><div class="cover"><img src="assets/posters/7690865236810681369.webp" width="420" height="600" alt="玄门千金，万煞臣服" loading="lazy" decoding="async"><span class="episodes">全102集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>玄门千金，万煞臣服</h4><p>玄幻 / 异能 / 都市</p></a>
+          <a class="drama-card" href="https://hongguoduanju.com/detail?series_id=7687159019349232702" target="_blank" rel="noopener noreferrer" data-category="ai" data-title="药香满院，种田采药赚万金" data-tags="剧情 / 穿越 / 逆袭" aria-label="在红果官网查看药香满院，种田采药赚万金"><div class="cover"><img src="assets/posters/7687159019349232702.webp" width="420" height="600" alt="药香满院，种田采药赚万金" loading="lazy" decoding="async"><span class="episodes">全540集</span><span class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></span></div><h4>药香满院，种田采药赚万金</h4><p>剧情 / 穿越 / 逆袭</p></a>
+        </div></section>
+      <div class="empty-state" id="empty-state" hidden><h3>本页没有匹配的剧目</h3><p>这里仅搜索页面展示的剧目样例。更多内容可以在 Mac 应用内搜索，结果以实际返回为准。</p><a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg">下载 Mac 版，继续找剧 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg></a><div><button class="clear-search" type="button" data-clear-search>清除搜索，查看全部</button></div></div>
+      <noscript><p class="section-copy">启用 JavaScript 可使用本页搜索、分类筛选和截图切换。下载安装包和剧目链接仍可直接使用。</p></noscript>
+    </section>
+
+    <section class="wrap desktop-section" id="screenshots" aria-labelledby="screenshots-title">
+      <div class="desktop-copy">
+        <p class="eyebrow">属于 Mac 的追剧体验</p>
+        <h2 id="screenshots-title">追剧这件事，Mac 也很顺手。</h2>
+        <p class="section-copy">打开推荐找一部好剧，也可以搜索剧名。收藏想看的内容，从本机观看记录接着看。</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><div><strong>找剧与续看</strong><span>搜索、榜单、收藏和本机观看进度。</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7zM4 5v14"/></svg><div><strong>播放更顺手</strong><span>选集、倍速、即时切画质与自动连播。</span></div></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2"/><rect x="12" y="11" width="7" height="6" rx="1"/></svg><div><strong>小窗陪你看</strong><span>置顶小窗随手切换，边做其他事边追剧。</span></div></li>
+        </ul>
+        <a class="text-link" href="#install">查看安装与首次播放步骤 →</a>
+      </div>
+      <div class="app-preview">
+        <div class="preview-tabs" role="group" aria-label="切换应用截图">
+          <button type="button" data-preview="recommend" aria-pressed="true">推荐播放</button><button type="button" data-preview="episodes" aria-pressed="false">选集侧栏</button><button type="button" data-preview="search" aria-pressed="false">搜索结果</button>
         </div>
+        <figure class="product-shot" data-preview-panel="recommend">
+          <a href="assets/recommend-latest.png" target="_blank" rel="noopener noreferrer" aria-label="查看推荐播放截图原图"><img src="assets/recommend-web.webp" alt="先前版本的推荐播放界面，正在播放视频，左侧有推荐、排行榜、收藏和历史入口" width="1500" height="860" loading="lazy"></a>
+          <figcaption>推荐播放 · 先前版本实拍，界面、海报和视频内容可能与当前版本不同。</figcaption>
+        </figure>
+        <figure class="product-shot" data-preview-panel="episodes" hidden>
+          <a href="assets/episodes-latest.png" target="_blank" rel="noopener noreferrer" aria-label="查看选集侧栏截图原图"><img src="assets/episodes-web.webp" alt="先前版本的视频与选集侧栏并排显示，包含剧集简介、季数和分集" width="1500" height="860" loading="lazy"></a>
+          <figcaption>选集侧栏 · 先前版本实拍，界面、海报和视频内容可能与当前版本不同。</figcaption>
+        </figure>
+        <figure class="product-shot" data-preview-panel="search" hidden>
+          <a href="assets/search-latest.png" target="_blank" rel="noopener noreferrer" aria-label="查看搜索结果截图原图"><img src="assets/search-web.webp" alt="先前版本搜索首辅娇娘后的剧目卡片结果" width="1500" height="860" loading="lazy"></a>
+          <figcaption>搜索结果 · 先前版本实拍，界面、海报和视频内容可能与当前版本不同。</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="demo-band" aria-labelledby="demo-title">
-      <div class="wrap demo-layout">
-        <div><span class="eyebrow">真实 App 录制</span><h2 id="demo-title">先看实际怎么播放。</h2><p>约 12 秒，静音录制自 v0.2.0 的 Mac 应用窗口，展示播放、返回推荐和选集。v0.2.9 的界面与播放结果可能不同；视频内容来自片源。</p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-intro.mp4" target="_blank" rel="noopener noreferrer">在新窗口观看原视频 ↗</a></div>
-        <video controls preload="none" playsinline poster="assets/v0.2.0-video-poster.png" aria-label="v0.2.0 真实 Mac 应用演示，静音，约 12 秒">
-          <source src="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-intro.mp4" type="video/mp4">
-          浏览器不支持播放时，请使用上方原视频链接。
-        </video>
-      </div>
+    <section class="wrap install-section" id="install" aria-labelledby="install-title">
+      <div class="install-heading"><div><p class="eyebrow">第一次使用</p><h2 id="install-title">从安装到第一集</h2></div><a class="text-link" href="#download">获取 Mac 安装包 →</a></div>
+      <ol class="install-steps">
+        <li><span class="step-number">01</span><div><h3>下载 DMG 安装包</h3><p>下载完整 Mac 版安装包，无需额外下载运行组件。</p></div></li>
+        <li><span class="step-number">02</span><div><h3>拖入“应用程序”</h3><p>打开 DMG，把红果短剧拖入“应用程序”文件夹。</p></div></li>
+        <li><span class="step-number">03</span><div><h3>打开，开始追剧</h3><p>首次启动配置内置组件；找剧和播放需要联网。</p></div></li>
+      </ol>
+      <details class="install-details"><summary>首次打开被 macOS 拦截？查看处理说明</summary><p>本版尚未经过 Apple 公证。若系统仅提示无法验证开发者，可在“系统设置 → 隐私与安全性”中确认打开；若提示恶意软件或“将损坏你的电脑”，请停止安装并反馈。</p><p>最低目标版本为 macOS 13；目前实测环境为 Apple Silicon / macOS 15.3.1。M5/macOS 26、物理 Intel 与 macOS 13 尚待实机验证。</p></details>
     </section>
 
-    <section class="screenshots-band" id="screenshots" aria-labelledby="screenshots-title">
-      <div class="wrap">
-        <div class="section-heading screenshots-heading"><span class="eyebrow">界面示意</span><h2 id="screenshots-title">打开就看，想找的也找得到。</h2><p>以下画面由先前版本连接本机内容服务时截取；界面、封面和视频内容可能与当前版本不同。</p></div>
-        <div class="screenshot-row">
-          <figure class="product-shot"><a href="assets/recommend-latest.png" target="_blank" rel="noopener noreferrer" aria-label="查看推荐播放界面截图原图"><img class="recommend-shot" src="assets/recommend-latest.png" alt="先前版本推荐播放界面，视频正在播放，左侧有推荐、排行榜、收藏和历史入口" width="3024" height="1734" loading="lazy"></a><figcaption>推荐播放 · 打开即看</figcaption></figure>
-          <div class="screenshot-copy"><span class="screenshot-index">01 / 推荐</span><h3>打开就进入下一段故事。</h3><p>推荐流中切换剧目，同一部剧自然播完后接着播放下一集；常用播放控制留在底栏。</p></div>
-        </div>
-        <div class="screenshot-row screenshot-row-reverse">
-          <figure class="product-shot"><a href="assets/episodes-latest.png" target="_blank" rel="noopener noreferrer" aria-label="查看选集侧栏截图原图"><img src="assets/episodes-latest.png" alt="视频与选集侧栏并排显示，侧栏列出剧集简介、季数和分集" width="1440" height="900" loading="lazy"></a><figcaption>选集侧栏 · 视频与剧集并排</figcaption></figure>
-          <div class="screenshot-copy"><span class="screenshot-index">02 / 选集</span><h3>选集在旁边，画面还在眼前。</h3><p>展开侧栏查看简介、分集和可识别的关联季；切集后继续在同一个播放器观看。</p></div>
-        </div>
-        <div class="screenshot-row">
-          <figure class="product-shot"><a href="assets/search-latest.png" target="_blank" rel="noopener noreferrer" aria-label="查看搜索结果截图原图"><img src="assets/search-latest.png" alt="搜索首辅娇娘后的剧目卡片结果，左侧仍可进入推荐和历史" width="1440" height="900" loading="lazy"></a><figcaption>搜索结果 · 找到想看的剧</figcaption></figure>
-          <div class="screenshot-copy"><span class="screenshot-index">03 / 搜索</span><h3>知道剧名，直接找。</h3><p>搜索剧名或演员，也可以从排行榜挑选；历史记录会保存本机观看位置。</p></div>
-        </div>
-      </div>
+    <section class="wrap release-section" id="release" aria-labelledby="release-title">
+      <div><p class="eyebrow">本次更新 / v0.2.9</p><h2 id="release-title">找得到，也接得上。</h2><p>修复“暂时无法搜索”和相关季持续“正在匹配”的问题。新安装无需等待本机索引建立，也可以在线找剧；已有收藏、历史和预约继续保留。</p><a class="text-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.9" target="_blank" rel="noopener noreferrer">阅读完整更新说明 ↗</a></div>
+      <ul class="release-points"><li><span>01</span><div><h3>在线找剧更顺畅</h3><p>合并官方网页搜索与名称检索，一个来源失败时保留可用结果。</p></div></li><li><span>02</span><div><h3>相关季重新匹配</h3><p>选剧下拉框使用新的搜索链路，有限结果不会覆盖已有预约基线。</p></div></li><li><span>03</span><div><h3>失败后，可以重试</h3><p>明确区分空结果与来源故障；手动重试重新取结果，快速换词不混入旧内容。</p></div></li></ul>
     </section>
 
-    <section class="features-band" id="features" aria-labelledby="features-title">
-      <div class="wrap">
-        <div class="section-heading"><span class="eyebrow">特色功能</span><h2 id="features-title">找剧、连播、续看，都为 Mac 调顺了。</h2></div>
-        <div class="feature-grid">
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">▦</span><h3>关联分季集中切换</h3><p>识别同名剧集的不同季，详情和播放时都能直接选季。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">»</span><h3>连续推荐与自动连播</h3><p>向下切换推荐剧目，同一部剧播完后接着播放下一集。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">◫</span><h3>播放中即时切画质</h3><p>最高画质、1080p、720p、540p、360p 可选，切换时保留播放进度。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">▣</span><h3>置顶小窗</h3><p>缩到置顶小窗，边做其他事边看，需要时恢复大窗。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">⌕</span><h3>搜索与榜单</h3><p>按剧名或演员搜索，也能从热播、推荐和新剧榜挑选。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">▥</span><h3>本机收藏与续播</h3><p>收藏、历史、观看位置和偏好存在本机，重新打开接着看。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">▶</span><h3>键盘操作</h3><p>空格暂停，方向键切剧或快进退，长按右方向键临时加速。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">≡</span><h3>播放弹幕</h3><p>播放时可开关按时间显示的弹幕。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">◐</span><h3>深浅色随手切换</h3><p>支持跟随系统、浅色和深色外观，画质与倍速偏好也可保存。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">↻</span><h3>推荐持续加载</h3><p>往下刷时继续获取剧目；近期已展示的内容会尽量避开，也可从榜首重看。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">◈</span><h3>播放中断恢复</h3><p>连接中断可重试；当前画质不可用时尝试其他档位，切画质失败保留原播放。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">⇥</span><h3>下一集预加载</h3><p>默认提前准备下一集，减少切集等待；低配机器或流量敏感时可在设置中关闭。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">♫</span><h3>音轨兼容处理</h3><p>针对部分不兼容的 HE-AACv2 音轨，仅转换音频，保留原视频编码。</p></article>
-          <article class="feature"><span class="feature-symbol" aria-hidden="true">↗</span><h3>反馈与更新提醒</h3><p>应用内整理问题信息，可选择在 Gitee 或 GitHub 提交；发现新版本时提示前往发行页。</p></article>
-        </div>
-      </div>
+    <section class="wrap download-section" id="download" aria-labelledby="download-title">
+      <div><h2 id="download-title">下一集，在 Mac 上见。</h2><p>红果短剧 Mac 版 v0.2.9 · 完整通用安装包</p><p>覆盖安装保留本机收藏、历史与观看位置。</p></div><div class="download-actions"><a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg> 下载 DMG 安装包</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/SHA256SUMS.txt">下载校验文件 ↗</a></div>
     </section>
+    <p class="wrap download-facts">安装包约 300 MiB · macOS 13+ · 物理 Intel、M5/macOS 26 待实机验证</p>
 
-    <section class="download-band" id="download" aria-labelledby="download-title">
-      <div class="wrap download-layout">
-        <div><span class="eyebrow">Mac 下载</span><h2 id="download-title">准备好，打开下一集。</h2><p class="download-intro">下载完整安装包后拖入“应用程序”。首次启动只在本机配置内置组件，无需再下载运行环境。</p></div>
-        <div class="download-panel">
-          <span class="release-kicker">正式版 · v0.2.9</span>
-          <strong>红果短剧 Mac 版 v0.2.9</strong>
-          <p>完整安装包内置 arm64 与 x86_64 运行组件，修复在线搜索与失败恢复，保留既有播放改进。已在 Apple Silicon 实测；物理 Intel 尚待实机验收。</p>
-          <a class="button button-primary download-button" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/HongguoMac-0.2.9-universal.dmg">下载 DMG 安装包 <span aria-hidden="true">↓</span></a>
-          <a class="button button-outline" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.9/SHA256SUMS.txt">下载校验文件 <span aria-hidden="true">↓</span></a>
-          <a class="mirror-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.2.9" target="_blank" rel="noopener noreferrer">查看版本说明 ↗</a>
-          <small>安装包约 300 MiB · 首次安装无需下载组件 · M5/macOS 26 与物理 Intel 待实机验证</small>
-          <p>旧版检查更新失败？可直接下载 DMG 覆盖安装；本机收藏、历史与观看位置会保留。</p>
-          <p class="star-support">用得顺手？<a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> 点个 Star 支持后续维护</a></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="install-band" id="install" aria-labelledby="install-title">
-      <div class="wrap install-layout">
-        <div class="section-heading"><span class="eyebrow">安装说明</span><h2 id="install-title">几步开始使用。</h2><p>最低目标版本为 macOS 13；目前实测环境为 Apple Silicon / macOS 15.3.1。</p></div>
-        <ol class="install-steps">
-          <li><span>01</span><div><h3>下载安装包</h3><p>点击页面上的“下载 Mac 版”，浏览器会直接下载 DMG 文件。</p></div></li>
-          <li><span>02</span><div><h3>拖入“应用程序”</h3><p>打开 DMG，将应用拖入“应用程序”文件夹。</p></div></li>
-          <li><span>03</span><div><h3>完成首次运行</h3><p>本版尚未经过 Apple 公证。若系统仅提示无法验证开发者，可在“系统设置 → 隐私与安全性”中确认打开；若提示恶意软件或“将损坏你的电脑”，请停止安装并反馈。首次启动只配置内置组件；搜索和播放仍需联网。</p></div></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="about-band" id="about" aria-labelledby="about-title">
-      <div class="wrap about-layout"><div><span class="eyebrow">关于项目</span><h2 id="about-title">由社区独立实现的 Mac 客户端。</h2></div><div><p>这是非官方项目，与红果短剧官方无隶属关系。应用界面、Mac 外壳和安装流程独立实现；本版内置首次运行所需组件，客户端源码目前未公开。</p><p>版本验证范围、第三方组件与使用限制请查看项目文档和发行说明。收藏与观看记录保存在本机，不与手机账号同步。默认发送匿名启动、播放与搜索失败统计：随机安装 ID 在服务端散列，启动事件增加处理器架构、macOS 大版本及预设失败类别；断网时在本机限量保存至多 7 天。不会上传搜索词、机型、观看内容、用户路径或错误详情；可在设置或安装界面关闭，关闭后清除待发事件。本机日志不会自动上传。本站使用 Cloudflare Web Analytics 统计页面访问；另按会话记录固定渠道类别的访问和下载按钮点击次数，不记录个人 ID、完整来源网址或实际下载结果。</p><div class="about-links"><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">GitHub 发行页 ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">Gitee 版本说明 ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues/new" target="_blank" rel="noopener noreferrer">Gitee 反馈 ↗</a></div></div></div>
+    <section class="wrap faq-section" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">你可能还想了解</h2>
+      <details><summary>可以同步手机上的收藏和观看记录吗？</summary><p>公开版的收藏、历史、观看位置和设置保存在本机，不与手机账号同步。重新打开应用可以从本机保存的位置继续观看。</p></details>
+      <details><summary>有哪些播放和操作功能？</summary><p>支持连续推荐、选集与关联季切换、倍速、即时切画质、置顶小窗、弹幕、深浅色外观和下一集预加载。空格暂停，方向键切剧或快进退，长按右方向键临时加速。具体画质与播放结果取决于片源和设备。</p></details>
+      <details><summary>能先看一段真实 App 演示吗？</summary><p>约 12 秒的静音录制来自 v0.2.0 Mac 应用窗口，展示播放、返回推荐和选集。v0.2.9 的界面与播放结果可能不同；视频内容来自片源。</p><p><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-intro.mp4" target="_blank" rel="noopener noreferrer">在新窗口观看原视频 ↗</a></p></details>
+      <details><summary>项目来源、隐私与统计说明</summary><p>这是非官方项目，与红果短剧官方无隶属关系。应用界面、Mac 外壳和安装流程独立实现；本版内置首次运行所需组件，客户端源码目前未公开。</p><p>版本验证范围、第三方组件与使用限制请查看项目文档和发行说明。收藏与观看记录保存在本机，不与手机账号同步。默认发送匿名启动与播放统计：随机安装 ID 在服务端散列，启动事件增加处理器架构、macOS 大版本及预设失败类别；断网时在本机限量保存至多 7 天。不会上传机型、观看内容、用户路径或错误详情；可在设置或安装界面关闭，关闭后清除待发事件。本机日志不会自动上传。本站使用 Cloudflare Web Analytics 统计页面访问；另按会话记录固定渠道类别的访问和下载按钮点击次数，不记录个人 ID、完整来源网址或实际下载结果。</p></details>
     </section>
   </main>
-  <footer><div class="wrap footer-inner"><span>红果短剧 Mac 版 <small>非官方社区项目</small></span><a href="#top">返回顶部 ↑</a></div></footer>
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="footer-brand" href="#top"><img src="assets/icon-web.png" width="23" height="23" alt="">红果短剧 Mac 版 · 非官方社区项目</a><div class="footer-links"><a href="#install">安装说明</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">Gitee ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues/new" target="_blank" rel="noopener noreferrer">反馈问题 ↗</a><a href="#top">返回顶部 ↑</a></div></div><p>由社区独立维护，与红果短剧官方无隶属关系。相关品牌、海报与内容归各自权利方所有。</p><p>剧目为官网页面采样展示，并非实时榜单；点击剧目前往原站。<a class="text-link" href="https://hongguoduanju.com/" target="_blank" rel="noopener noreferrer">红果短剧官网 ↗</a></p></div></footer>
 </body>
 </html>
