@@ -301,3 +301,20 @@ h3 { font-weight: 600; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+.release-demo{padding-bottom:76px}.release-demo h2{font-size:clamp(28px,3vw,40px);margin:10px 0 14px}.release-demo video{display:block;width:100%;height:auto;max-height:680px;background:#16171b;border-radius:20px;margin:24px 0 16px;box-shadow:0 12px 48px #00000018}
+
+/* v1.0.0: real release-build UI, with account sync as the launch message. */
+.release-pill { display:inline-flex; margin-top:22px; padding:6px 11px; border:1px solid #ff799552; border-radius:99px; background:#ff718815; color:#ffadc0; font-size:12px; }
+.sync-showcase { min-width:0; }
+.device-sync-line { display:flex; justify-content:center; align-items:center; gap:14px; color:#c1c0ce; font-size:12px; margin-bottom:20px; }
+.device-sync-line span { padding:9px 12px; border:1px solid #ffffff24; border-radius:9px; background:#272630; }
+.device-sync-line b { color:#ffa1b7; font-weight:550; }
+.hero-app-frame { border:1px solid #ffffff2d; padding:7px; background:#25242e; border-radius:15px; box-shadow:0 28px 70px #0008; transform:perspective(1200px) rotateY(-3deg); }
+.hero-app-frame img { width:100%; height:auto; display:block; border-radius:9px; }
+.sync-feature-pills { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:24px; }
+.sync-feature-pills span { color:#e4c4d3; border:1px solid #b96b853d; background:#642b3a1f; border-radius:99px; padding:6px 11px; font-size:12px; }
+.preview-tabs { flex-wrap:wrap; }
+@media(max-width:600px){ .device-sync-line{font-size:10px;gap:7px}.device-sync-line span{padding:8px}.hero-app-frame{transform:none;padding:4px}.release-pill{font-size:11px}.sync-feature-pills{gap:7px}.sync-feature-pills span{font-size:11px}.preview-tabs{gap:4px} }
+
+.extra-gallery{border-top:1px solid var(--line);padding-block:25px}.extra-gallery summary{cursor:pointer;color:#d9c4ce;font-size:14px}.extra-gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}.extra-gallery figure{margin:0}.extra-gallery img{display:block;width:100%;border-radius:10px;border:1px solid #46404a}.extra-gallery figcaption{font-size:12px;color:#b0a4b3;margin-top:8px}@media(max-width:600px){.extra-gallery-grid{grid-template-columns:1fr}.extra-gallery summary{font-size:12px;line-height:1.7}}
