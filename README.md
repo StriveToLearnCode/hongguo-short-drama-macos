@@ -4,15 +4,23 @@
 
 # 红果短剧 Mac 版（非官方）
 
-**手机 × Mac 双端同步追剧 · v1.0.0**
+**历史记录与推荐加载修复 · v1.0.1**
 
 手机里的红果片单，终于搬上 Mac 了。
 
-[下载 v1.0.0 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.0/HongguoMac-1.0.0-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v1.0.1 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.1/HongguoMac-1.0.1-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.1/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
 这是由 `StriveToLearnCode` 独立维护的非官方 macOS 客户端，与红果短剧官方无隶属关系。本仓库用于发行与反馈，客户端源码目前未公开。欢迎自愿 Star 支持项目，不影响下载或使用。
+
+## 1.0.1 修复更新
+
+- 修复历史移除后又回来、撤销保存被覆盖，以及清空后旧云端记录回流的问题；移除和清空只影响本机显示，手机端观看进度保留。
+- 推荐一轮结束后继续向平台获取下一轮，跨轮过滤重复剧目并保留平台顺序。平台暂未提供新内容时仍可能没有更多推荐。
+- 改进账号会话保存、设备绑定和同步节奏；平台要求验证或冷却时暂停自动请求。
+
+本次修复经过本地自动化与合成接口页面测试，没有使用真实账号进行联机回归。Apple 绑定账号兼容、手机/Mac 共存和推荐观看行为回传仍未完成验证，账号同步继续作为测试功能提供。
 
 ## 1.0 大版本：同一个账号，换个屏幕接着追
 
@@ -46,7 +54,7 @@ Mac 登录同一红果账号，可查看收藏、观看历史、预约和点赞�
 
 macOS 13+，Apple Silicon / Intel 通用包。Apple Silicon 已构建与验收；物理 Intel Mac、macOS 13 和全新 macOS 用户账户仍待实机验证。
 
-1. 下载 v1.0.0 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `5a893e355e3e9909a497ee79646cf887e69d3e4165ac822b4ed6153a0995b87e`。
+1. 下载 v1.0.1 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `fa59500ecca4c1b738ada79a19effab9a20b3e7c8b5bd9bbc5a6e652fc01afc5`。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”，覆盖安装保留已有收藏、历史与设置。
 3. 从“应用程序”启动。安装包采用临时签名，尚未经过 Apple 公证。如果系统仅提示无法验证开发者，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并反馈，不要关闭系统防护。
 4. 首次启动所需组件内置；找剧、播放与账号同步需要联网。
