@@ -2,17 +2,24 @@
 
 <img src="assets/icon.png" alt="红果短剧 Mac 版图标" width="88">
 
-# 红果短剧 Mac 版（非官方）
+# 红果短剧 Mac 版｜macOS 桌面客户端（非官方）
 
-**历史记录与推荐加载修复 · v1.0.1**
+**在 Mac 上看红果短剧，手机片单接着追**
 
-手机里的红果片单，终于搬上 Mac 了。
+红果短剧电脑版（Mac），适用于 macOS 13+，提供 Apple Silicon / Intel 通用 DMG 安装包。
 
 [下载 v1.0.1 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.1/HongguoMac-1.0.1-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.1/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
 这是由 `StriveToLearnCode` 独立维护的非官方 macOS 客户端，与红果短剧官方无隶属关系。本仓库用于发行与反馈，客户端源码目前未公开。欢迎自愿 Star 支持项目，不影响下载或使用。
+
+## 红果短剧 Mac 客户端能做什么？
+
+- **账号与手机片单**：支持红果账号登录，查看收藏、观看历史、点赞和预约；账号云同步处于测试阶段，具体限制见下文。
+- **大屏高清追剧**：在线搜索短剧、分季选集、自动连播；按片源提供最高 1080p 画质。
+- **Mac 桌面播放**：支持最高 3 倍速、全屏和置顶小窗，游客模式的收藏与续播位置保存在本机。
+- **直接下载安装**：前往 [GitHub Releases 下载红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest)，或查看 [Mac 版下载与安装指南](https://strivetolearncode.github.io/hongguo-short-drama-macos/#install)。
 
 ## 1.0.1 修复更新
 
@@ -60,6 +67,24 @@ macOS 13+，Apple Silicon / Intel 通用包。Apple Silicon 已构建与验收�
 4. 首次启动所需组件内置；找剧、播放与账号同步需要联网。
 
 旧版检查更新失败时，可手动覆盖安装。新版应用内下载会显示进度并核验可信摘要，下载完成后由用户选择保存位置及安装。摘要校验不等于 Apple 公证。
+
+## 红果短剧电脑版常见问题
+
+### 红果短剧能在 Mac 电脑上看吗？
+
+本项目提供独立维护的红果短剧 Mac 桌面客户端，系统要求为 macOS 13 及以上。Apple Silicon / Intel 使用同一个通用安装包；具体实机验证范围见“下载与安装”。
+
+### 红果短剧 Mac 版在哪里下载？
+
+在本仓库的 [Releases](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest) 页面下载 DMG 安装包与同版校验文件。安装步骤见上文“下载与安装”，后续版本以 Releases 为准。
+
+### 可以同步手机上的红果收藏和观看历史吗？
+
+支持同一红果账号的收藏、历史、点赞和预约云记录，账号同步目前开放测试。平台验证、账号类型与同步节奏可能影响可用性，不承诺所有账号均可用或实时同步。不登录也可以使用游客模式。
+
+### 这是红果官方客户端吗？支持 Windows 吗？
+
+这是非官方社区项目，与红果短剧官方无隶属关系；本项目当前仅提供 macOS 安装包，不提供 Windows 或 Android 安装包。
 
 ## 隐私与反馈
 
