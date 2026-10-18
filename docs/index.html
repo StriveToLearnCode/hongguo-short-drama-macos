@@ -18,6 +18,7 @@
   <title>红果短剧 Mac 版下载｜macOS 桌面客户端（非官方）</title>
   <link rel="icon" href="assets/icon-web.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="star-support.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,7 +64,7 @@
           <p class="hero-lead">手机上收藏的好故事，回到 Mac 不用重新找。<br>登录同一红果账号，把片单和观看记录带到大屏。</p>
           <div class="hero-actions"><a class="button button-primary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.0.1/HongguoMac-1.0.1-universal.dmg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg> 下载 Mac 版，接着追</a><a class="hero-guide" href="#screenshots">看看客户端 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></div>
           <p class="hero-status">v1.0.1 · macOS 13+ · Apple Silicon / Intel 通用包</p>
-          <div class="hero-links"><a href="#install">安装指南 ↗</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">GitHub 点个 Star ↗</a></div>
+          <div class="hero-links"><a href="#install">安装指南 ↗</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer" data-star-link>GitHub 点个 Star ↗</a></div>
           <p class="hero-note">非官方社区项目 · 尚未经过 Apple 公证</p>
         </div>
         <div class="hero-showcase sync-showcase">
@@ -181,14 +182,27 @@
     </section>
     <p class="wrap download-facts">安装包约 300 MiB · macOS 13+ · 物理 Intel、M5/macOS 26 待实机验证</p>
 
+    <section class="wrap star-support" id="support" aria-labelledby="support-title">
+      <div class="star-support-copy">
+        <p class="eyebrow">支持这个项目</p>
+        <h2 id="support-title">用着顺手，欢迎点个 Star。</h2>
+        <p>这个 Mac 客户端是我自己在维护。如果你用着还不错，欢迎去 GitHub 点个 Star。</p>
+        <p class="star-support-note">是否 Star 都不影响下载和使用。源码暂未公开，项目由社区独立维护。</p>
+      </div>
+      <div class="star-support-action">
+        <a class="button button-secondary" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer" data-star-link><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.8 5.7 6.3.9-4.6 4.5 1.1 6.3-5.6-3-5.6 3 1.1-6.3L3 9.6l6.2-.9z"/></svg>去 GitHub 点个 Star ↗</a>
+        <p>打开后点击仓库右上角 Star<br>需要登录 GitHub 账号</p>
+      </div>
+    </section>
+
     <section class="wrap faq-section" id="about" aria-labelledby="about-title">
       <h2 id="about-title">你可能还想了解</h2>
       <details><summary>可以同步手机上的收藏和观看记录吗？</summary><p>v1.0.0 开放账号云同步测试。在 Mac 登录同一红果账号，可以读取收藏、观看历史、预约和点赞记录，Mac 上的新操作也可以回写账号云记录。同步可用性取决于平台验证和网络；手机端双向变化与跨设备进度冲突尚未全部完成实机验证，不承诺实时同步。游客模式的收藏、历史与观看位置仍保存在本机。</p></details>
       <details><summary>有哪些播放和操作功能？</summary><p>支持连续推荐、选集与关联季切换、倍速、即时切画质、置顶小窗、弹幕、深浅色外观和下一集预加载。空格暂停，方向键切剧或快进退，长按右方向键临时加速。具体画质与播放结果取决于片源和设备。</p></details>
       <details><summary>能先看一段真实 App 演示吗？</summary><p>30 秒静音演示来自本次 v1.0.0 build 33 最终安装包，展示账号同步面板、收藏、观看历史与高清播放；个人账号信息已隐藏。</p><p><a href="assets/v1.0.0-b33-intro.mp4" target="_blank" rel="noopener noreferrer">观看本次新版实拍演示 ↗</a></p></details>
-      <details><summary>项目来源、隐私与统计说明</summary><p>这是非官方项目，与红果短剧官方无隶属关系。应用界面、Mac 外壳和安装流程独立实现；本版内置首次运行所需组件，客户端源码目前未公开。</p><p>版本验证范围、第三方组件与使用限制请查看项目文档和发行说明。游客收藏与观看记录保存在本机。账号登录会自动配置本机环境，可读取和回写同一账号的收藏、历史与预约；具体可用性受平台验证和网络影响。默认发送匿名启动与播放统计：随机安装 ID 在服务端散列，启动事件增加处理器架构、macOS 大版本及预设失败类别；断网时在本机限量保存至多 7 天。不会上传机型、观看内容、用户路径或错误详情；可在设置或安装界面关闭，关闭后清除待发事件。本机日志不会自动上传。本站使用 Cloudflare Web Analytics 统计页面访问；另按会话记录固定渠道类别的访问和下载按钮点击次数，不记录个人 ID、完整来源网址或实际下载结果。</p></details>
+      <details><summary>项目来源、隐私与统计说明</summary><p>这是非官方项目，与红果短剧官方无隶属关系。应用界面、Mac 外壳和安装流程独立实现；本版内置首次运行所需组件，客户端源码目前未公开。</p><p>版本验证范围、第三方组件与使用限制请查看项目文档和发行说明。游客收藏与观看记录保存在本机。账号登录会自动配置本机环境，可读取和回写同一账号的收藏、历史与预约；具体可用性受平台验证和网络影响。默认发送匿名启动与播放统计：随机安装 ID 在服务端散列，启动事件增加处理器架构、macOS 大版本及预设失败类别；断网时在本机限量保存至多 7 天。不会上传机型、观看内容、用户路径或错误详情；可在设置或安装界面关闭，关闭后清除待发事件。本机日志不会自动上传。本站使用 Cloudflare Web Analytics 统计页面访问；另记录固定渠道类别的会话访问、下载按钮和 Star 入口点击次数，不记录个人 ID、完整来源网址或实际下载结果；点击 Star 入口不代表已在 GitHub 完成 Star。</p></details>
     </section>
   </main>
-  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="footer-brand" href="#top"><img src="assets/icon-web.png" width="23" height="23" alt="">红果短剧 Mac 版 · 非官方社区项目</a><div class="footer-links"><a href="#install">安装说明</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">Gitee ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues/new" target="_blank" rel="noopener noreferrer">反馈问题 ↗</a><a href="#top">返回顶部 ↑</a></div></div><p>由社区独立维护，与红果短剧官方无隶属关系。相关品牌、海报与内容归各自权利方所有。</p><p>剧目为官网页面采样展示，并非实时榜单；点击剧目前往原站。<a class="text-link" href="https://hongguoduanju.com/" target="_blank" rel="noopener noreferrer">红果短剧官网 ↗</a></p></div></footer>
+  <footer class="site-footer"><div class="wrap"><div class="footer-top"><a class="footer-brand" href="#top"><img src="assets/icon-web.png" width="23" height="23" alt="">红果短剧 Mac 版 · 非官方社区项目</a><div class="footer-links"><a href="#install">安装说明</a><a href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer" data-star-link>GitHub ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos" target="_blank" rel="noopener noreferrer">Gitee ↗</a><a href="https://gitee.com/huangxinya0928/hongguo-short-drama-macos/issues/new" target="_blank" rel="noopener noreferrer">反馈问题 ↗</a><a href="#top">返回顶部 ↑</a></div></div><p>由社区独立维护，与红果短剧官方无隶属关系。相关品牌、海报与内容归各自权利方所有。</p><p>剧目为官网页面采样展示，并非实时榜单；点击剧目前往原站。<a class="text-link" href="https://hongguoduanju.com/" target="_blank" rel="noopener noreferrer">红果短剧官网 ↗</a></p></div></footer>
 </body>
 </html>

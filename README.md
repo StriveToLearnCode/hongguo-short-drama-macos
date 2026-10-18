@@ -68,6 +68,12 @@ macOS 13+，Apple Silicon / Intel 通用包。Apple Silicon 已构建与验收�
 
 旧版检查更新失败时，可手动覆盖安装。新版应用内下载会显示进度并核验可信摘要，下载完成后由用户选择保存位置及安装。摘要校验不等于 Apple 公证。
 
+## 支持这个项目
+
+这个 Mac 客户端是我自己在维护。如果你用着还不错，欢迎在仓库右上角点个 ⭐ Star。有问题可以 [提 Issue](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)，尽量带上版本、系统和复现步骤。
+
+是否 Star 都不影响下载和使用。项目是非官方客户端，源码暂未公开。
+
 ## 红果短剧电脑版常见问题
 
 ### 红果短剧能在 Mac 电脑上看吗？
