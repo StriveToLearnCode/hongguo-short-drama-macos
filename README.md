@@ -8,7 +8,7 @@
 
 红果短剧电脑版（Mac），适用于 macOS 13+，提供 Apple Silicon / Intel 通用 DMG 安装包。
 
-[下载 v1.1.1 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.1/HongguoMac-1.1.1-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.1/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v1.1.2 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.2/HongguoMac-1.1.2-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.2/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -20,6 +20,14 @@
 - **大屏高清追剧**：在线搜索短剧、分季选集、自动连播；按片源提供最高 1080p 画质。
 - **Mac 桌面播放**：支持最高 3 倍速、全屏和置顶小窗，游客模式的收藏与续播位置保存在本机。
 - **直接下载安装**：前往 [GitHub Releases 下载红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest)，或查看 [Mac 版下载与安装指南](https://strivetolearncode.github.io/hongguo-short-drama-macos/#install)。
+
+## 1.1.2｜更新说明弹窗显示修复
+
+- 修复 v1.1.1 更新说明正文竖排、重叠和显示不完整的问题。
+- 保留自动连播、切集进度隔离、提前中断恢复与全屏播放修复。
+- 已验证深浅主题与不同窗口尺寸下的实际弹窗显示。
+
+macOS 13+，Apple Silicon / Intel 通用包，build 37。覆盖安装保留本机数据。详情见 [完整发行说明](RELEASE_NOTES.md)。
 
 ## 1.1.1｜自动连播与全屏播放修复
 
@@ -79,7 +87,7 @@ Mac 登录同一红果账号，可查看收藏、观看历史、预约和点赞�
 
 macOS 13+，Apple Silicon / Intel 通用包。Apple Silicon 已构建与验收；物理 Intel Mac、macOS 13 和全新 macOS 用户账户仍待实机验证。
 
-1. 下载 v1.1.1 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `d7d60ba2b7bada3de2307ad17170ec7d4e193aec8432e2ade56b6907c4a665df`。
+1. 下载 v1.1.2 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `e2409cf7e6cc9a238c366985aaad6fc774b6c8ee3e4904961b6dce90992ea6a5`。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”，覆盖安装保留已有收藏、历史与设置。
 3. 从“应用程序”启动。安装包采用临时签名，尚未经过 Apple 公证。如果系统仅提示无法验证开发者，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并反馈，不要关闭系统防护。
 4. 首次启动所需组件内置；找剧、播放与账号同步需要联网。
