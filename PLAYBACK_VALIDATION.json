@@ -1,0 +1,189 @@
+{
+  "version": "1.1.6",
+  "build": 41,
+  "localDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "sourceCommit": "75828ec9b9ea40e7718081e32f92254050522fad",
+  "environment": {
+    "macOS": "15.3.1",
+    "architecture": "arm64",
+    "cpu": "Apple M4 Pro",
+    "mode": "guest",
+    "preloadNext": true
+  },
+  "method": {
+    "engine": "Native macOS WKWebView, visible window, real upstream CDN media; no mocked media",
+    "resources": "Mounted final DMG resources and installed backend verified byte-for-byte; timing uses a separate native test window with these assets",
+    "packagedAppLaunched": true,
+    "automatic": "Seek to the final 0.25 seconds, then allow the actual ended event to advance",
+    "measurement": "Application requestVideoFrameCallback metric: switch intent/start to first presented frame; cold initial series lookup excluded",
+    "warmCondition": "Next episode preload reports ready before advancing; previous episode complete cache exists",
+    "preliminaryRuns": "Hidden/occluded windows, concurrent clients and an initial non-production rate limit were excluded; completed visible runs are listed"
+  },
+  "package": {
+    "sha256": "f303ae2a20ad8170bac4212a23df16c3cd64af5e4f98d9bc21898eab353c9be5",
+    "bytes": 314972240,
+    "sourceFingerprintVerified": true,
+    "mountedSignatureVerified": true,
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "freshOfflineStartupPassed": true
+  },
+  "tests": {
+    "javascriptSuitesPassed": 71,
+    "pythonTestsPassed": 410,
+    "pythonExcludedIOSCapture": 15,
+    "segmentedTestsPassed": 18,
+    "preloadTestsPassed": 11,
+    "offlineInstallUpgradeRollbackDataPreservationPassed": true,
+    "updateRangeResumeChecksumFallbackPassed": true
+  },
+  "cases": [
+    {
+      "title": "玩家无响应第二季",
+      "quality": "best",
+      "episodes": [
+        100,
+        101
+      ],
+      "jumpEpisode": 120,
+      "jumpWasCached": false,
+      "decodedDimensions": [
+        1920,
+        1080
+      ],
+      "preloadStatus": "ready",
+      "firstFrameMs": {
+        "autoplay": 306,
+        "previous": 508,
+        "next": 467,
+        "arbitraryCold": 3031
+      },
+      "allFlowsCompleted": true
+    },
+    {
+      "title": "首辅娇娘",
+      "quality": "best",
+      "episodes": [
+        30,
+        31
+      ],
+      "jumpEpisode": 55,
+      "jumpWasCached": false,
+      "decodedDimensions": [
+        1080,
+        1920
+      ],
+      "preloadStatus": "ready",
+      "firstFrameMs": {
+        "autoplay": 406,
+        "previous": 486,
+        "next": 500,
+        "arbitraryCold": 3602
+      },
+      "allFlowsCompleted": true
+    },
+    {
+      "title": "灾年逆袭：我靠穿越养全家",
+      "quality": "best",
+      "episodes": [
+        40,
+        41
+      ],
+      "jumpEpisode": 70,
+      "jumpWasCached": false,
+      "decodedDimensions": [
+        1080,
+        1920
+      ],
+      "preloadStatus": "ready",
+      "firstFrameMs": {
+        "autoplay": 403,
+        "previous": 503,
+        "next": 500,
+        "arbitraryCold": 5322
+      },
+      "allFlowsCompleted": true
+    },
+    {
+      "title": "持械入宋：第八季",
+      "quality": "best",
+      "episodes": [
+        32,
+        33
+      ],
+      "jumpEpisode": 65,
+      "jumpWasCached": false,
+      "decodedDimensions": [
+        1080,
+        1920
+      ],
+      "preloadStatus": "ready",
+      "firstFrameMs": {
+        "autoplay": 319,
+        "previous": 556,
+        "next": 450,
+        "arbitraryCold": 2557
+      },
+      "allFlowsCompleted": true
+    },
+    {
+      "title": "玩家无响应第二季",
+      "quality": "540p",
+      "episodes": [
+        20,
+        21
+      ],
+      "jumpEpisode": 60,
+      "jumpWasCached": false,
+      "decodedDimensions": [
+        960,
+        540
+      ],
+      "preloadStatus": "ready",
+      "firstFrameMs": {
+        "autoplay": 450,
+        "previous": 202,
+        "next": 465,
+        "arbitraryCold": 4968
+      },
+      "allFlowsCompleted": true
+    },
+    {
+      "title": "玩家无响应第二季",
+      "quality": "best",
+      "episodes": [
+        100,
+        101
+      ],
+      "jumpEpisode": 120,
+      "jumpWasCached": true,
+      "decodedDimensions": [
+        1920,
+        1080
+      ],
+      "preloadStatus": "ready",
+      "firstFrameMs": {
+        "autoplay": 393,
+        "previous": 490,
+        "next": 500,
+        "arbitraryCached": 513
+      },
+      "allFlowsCompleted": true
+    }
+  ],
+  "controls": {
+    "pauseViaUI": true,
+    "seekCompletedWhilePaused": true,
+    "resumeAdvancedPastTarget": true,
+    "episodeIdentityAndProgressPassed": true
+  },
+  "limitations": [
+    "Uncached cross-episode jumps still took 2557–5322 ms in these samples; zero-wait cold playback is not claimed.",
+    "Measurements are samples, not a guarantee for all series, networks or machines.",
+    "Physical M1, Intel Mac and macOS 13 were not tested.",
+    "Real-account cloud sync was outside this playback regression."
+  ]
+}
