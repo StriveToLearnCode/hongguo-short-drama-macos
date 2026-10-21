@@ -173,8 +173,8 @@
     </section>
 
     <section class="wrap release-section" id="release" aria-labelledby="release-title">
-      <div><p class="eyebrow">本次更新 / v1.1.6</p><h2 id="release-title">片源恢复，下一集少等一会。</h2><p>新增公开片源查询回退；分段预加载不可用时提前准备下一集完整缓存。老板键现在可关闭，未设置过的用户默认不占用大写字母。覆盖安装保留本机数据。</p><a class="text-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v1.1.6" target="_blank" rel="noopener noreferrer">阅读完整更新说明 ↗</a></div>
-      <ul class="release-points"><li><span>01</span><div><h3>增加片源回退</h3><p>旧接口没有返回可用地址时，尝试公开批量接口，并核对当前视频 ID。</p></div></li><li><span>02</span><div><h3>提前准备下一集</h3><p>分段预加载不可用时，转为准备完整缓存，减少切集冷启动等待。</p></div></li><li><span>03</span><div><h3>老板键可关闭</h3><p>未设置过的用户默认不注册全局快捷键；已设置的用户可在偏好设置中关闭。</p></div></li></ul>
+      <div><p class="eyebrow">本次更新 / v1.1.6</p><h2 id="release-title">预加载完成，切集约半秒。</h2><p>下一集和完整播放过的视频保留本地缓存。多剧原生实测中，预加载后的连播与上下集首帧约 0.2–0.6 秒；首次跳至未缓存集仍有等待。覆盖安装保留本机数据。</p><a class="text-link" href="https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v1.1.6" target="_blank" rel="noopener noreferrer">阅读完整更新说明与实测范围 ↗</a></div>
+      <ul class="release-points"><li><span>01</span><div><h3>完整预加载下一集</h3><p>分段准备继续生成完整 MP4；后台失败时接续完整文件准备。</p></div></li><li><span>02</span><div><h3>重复选集复用缓存</h3><p>已完整播放的视频保留本地缓存，返回上一集或重复选播时直接复用。</p></div></li><li><span>03</span><div><h3>真实多剧首帧验收</h3><p>覆盖四部剧的自动 1080p 与另测 540p，公开计时方法和未缓存跨集的等待范围。</p></div></li></ul>
     </section>
 
     <section class="wrap download-section" id="download" aria-labelledby="download-title">
