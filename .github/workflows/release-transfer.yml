@@ -1,0 +1,99 @@
+name: Receive verified release package
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        type: string
+      sha256:
+        required: true
+        type: string
+      zip_sha256:
+        required: true
+        type: string
+      zip_size:
+        required: true
+        type: string
+      public_key:
+        required: true
+        type: string
+      nonce:
+        required: true
+        type: string
+permissions:
+  contents: write
+  statuses: write
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Install pinned GitHub artifact client
+        run: npm install --no-audit --no-fund @actions/artifact@2.3.2
+      - name: Receive immutable package and upload to existing draft
+        uses: actions/github-script@v7
+        env:
+          VERSION: ${{ inputs.version }}
+          EXPECTED_SHA: ${{ inputs.sha256 }}
+          ZIP_SHA: ${{ inputs.zip_sha256 }}
+          ZIP_SIZE: ${{ inputs.zip_size }}
+          CLIENT_KEY: ${{ inputs.public_key }}
+          NONCE: ${{ inputs.nonce }}
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            const crypto = require('node:crypto');
+            const fs = require('node:fs/promises');
+            const path = require('node:path');
+            const cp = require('node:child_process');
+            const { VERSION, EXPECTED_SHA, ZIP_SHA, ZIP_SIZE, CLIENT_KEY, NONCE } = process.env;
+            if (!/^\d+\.\d+\.\d+$/.test(VERSION) || !/^[a-f0-9]{64}$/.test(EXPECTED_SHA) || !/^[a-f0-9]{64}$/.test(ZIP_SHA) || !/^[a-f0-9]{16}$/.test(NONCE) || !/^\d{1,10}$/.test(ZIP_SIZE) || Number(ZIP_SIZE) > 2000000000) throw Error('Invalid transfer inputs');
+            const repo = context.repo;
+            const releases = await github.paginate(github.rest.repos.listReleases, repo);
+            const release = releases.find(item => item.tag_name === `v${VERSION}`);
+            if (!release?.draft || release.prerelease) throw Error('Expected an existing stable draft');
+            const filename = `HongguoMac-${VERSION}-universal.dmg`;
+            if (release.assets.some(item => item.name === filename)) throw Error('DMG already exists; inspect before replacing');
+            const root = path.join(process.env.GITHUB_WORKSPACE, 'node_modules/@actions/artifact');
+            const { internalArtifactTwirpClient } = require(path.join(root, 'lib/internal/shared/artifact-twirp-client.js'));
+            const { getBackendIdsFromToken } = require(path.join(root, 'lib/internal/shared/util.js'));
+            const { StringValue } = require(path.join(root, 'lib/generated/index.js'));
+            const { DefaultArtifactClient } = require(path.join(root, 'lib/artifact.js'));
+            const ids = getBackendIdsFromToken();
+            const client = internalArtifactTwirpClient();
+            const name = `release-${VERSION}-${NONCE}`;
+            const created = await client.CreateArtifact({ ...ids, name, version: 4 });
+            if (!created.ok) throw Error('Artifact creation failed');
+            const peer = crypto.createPublicKey({ key: Buffer.from(CLIENT_KEY, 'base64'), format: 'der', type: 'spki' });
+            const ephemeral = crypto.generateKeyPairSync('x25519');
+            const key = crypto.createHash('sha256').update(crypto.diffieHellman({ privateKey: ephemeral.privateKey, publicKey: peer })).digest();
+            const iv = crypto.randomBytes(12);
+            const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+            const data = Buffer.concat([cipher.update(created.signedUploadUrl, 'utf8'), cipher.final()]);
+            const envelope = Buffer.from(JSON.stringify({ key: ephemeral.publicKey.export({format:'der',type:'spki'}).toString('base64'), iv: iv.toString('base64'), tag: cipher.getAuthTag().toString('base64'), data: data.toString('base64') })).toString('base64url');
+            const prefix = `release-transfer/${NONCE}`;
+            const target = `https://github.com/${repo.owner}/${repo.repo}/actions/runs/${context.runId}`;
+            const chunks = envelope.match(/.{1,900}/g);
+            for (let index = 0; index < chunks.length; index++) await github.rest.repos.createCommitStatus({ ...repo, sha: context.sha, state: 'pending', context: `${prefix}/key/${index}`, description: `Encrypted upload ${index+1}/${chunks.length}`, target_url: `${target}#${chunks[index]}` });
+            await github.rest.repos.createCommitStatus({ ...repo, sha: context.sha, state:'pending', context:`${prefix}/ready`, description:'Waiting for encrypted transfer', target_url:target });
+            let ready = false;
+            for (let attempt = 0; attempt < 180; attempt++) {
+              const {data: statuses} = await github.rest.repos.listCommitStatusesForRef({ ...repo, ref:context.sha, per_page:100 });
+              if (statuses.some(item => item.context === `${prefix}/ready` && item.state === 'success' && item.description === `uploaded ${ZIP_SHA}`)) { ready = true; break; }
+              await new Promise(resolve => setTimeout(resolve, 25000));
+            }
+            if (!ready) throw Error('Transfer did not complete within the allowed window');
+            const finalized = await client.FinalizeArtifact({ ...ids, name, size:ZIP_SIZE, hash:StringValue.create({value:`sha256:${ZIP_SHA}`}) });
+            if (!finalized.ok) throw Error('Artifact finalization failed');
+            const output = path.join(process.env.RUNNER_TEMP, 'verified-release');
+            await new DefaultArtifactClient().downloadArtifact(Number(finalized.artifactId), {path:output});
+            const file = path.join(output, filename);
+            const bytes = await fs.readFile(file);
+            if (crypto.createHash('sha256').update(bytes).digest('hex') !== EXPECTED_SHA) throw Error('DMG SHA-256 mismatch');
+            const current = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+            if (!current.draft || current.assets.some(item => item.name === filename)) throw Error('Draft changed during transfer');
+            cp.execFileSync('gh',['release','upload',`v${VERSION}`,file,'--repo',`${repo.owner}/${repo.repo}`], {stdio:'inherit'});
+            const result = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+            const asset = result.assets.find(item => item.name === filename);
+            if (!result.draft || !asset || asset.size !== bytes.length || asset.digest !== `sha256:${EXPECTED_SHA}` || asset.state !== 'uploaded') throw Error('GitHub asset verification failed');
+            core.info('Verified identical DMG uploaded to draft; stable publication remains a separate gated step.');
