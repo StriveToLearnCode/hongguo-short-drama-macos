@@ -19,7 +19,7 @@ permissions:
 jobs:
   transfer:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - name: Verify immutable package and upload to existing draft
         uses: actions/github-script@v7
@@ -51,13 +51,28 @@ jobs:
               throw Error('An asset already exists; inspect before replacing');
             }
             const file = path.join(process.env.RUNNER_TEMP, filename);
-            const response = await new Promise((resolve,reject) => {
-              const request = https.get(url, resolve);
-              request.setTimeout(120000, () => request.destroy(Error('Download connection idle timeout')));
-              request.on('error',reject);
-            });
-            if (response.statusCode !== 200 || Number(response.headers['content-length']) !== Number(EXPECTED_SIZE)) { response.destroy(); throw Error('Unexpected package response'); }
-            await pipeline(response, fs.createWriteStream(file));
+            for (let attempt = 0; attempt < 16; attempt++) {
+              const offset = fs.existsSync(file) ? fs.statSync(file).size : 0;
+              if (offset === Number(EXPECTED_SIZE)) break;
+              if (offset > Number(EXPECTED_SIZE)) throw Error('Unexpected partial file size');
+              try {
+                core.info(`Receiving package from byte ${offset} of ${EXPECTED_SIZE}`);
+                const response = await new Promise((resolve,reject) => {
+                  const request = https.get(url, {headers: offset ? {Range:`bytes=${offset}-${Number(EXPECTED_SIZE)-1}`} : {}}, resolve);
+                  request.setTimeout(120000, () => request.destroy(Error('Download connection idle timeout')));
+                  request.on('error',reject);
+                });
+                const validRange = !offset || response.headers['content-range'] === `bytes ${offset}-${Number(EXPECTED_SIZE)-1}/${EXPECTED_SIZE}`;
+                if (response.statusCode !== (offset ? 206 : 200) || Number(response.headers['content-length']) !== Number(EXPECTED_SIZE)-offset || !validRange) {
+                  response.destroy(); throw Error('Unexpected package response');
+                }
+                await pipeline(response, fs.createWriteStream(file, {flags:offset ? 'a' : 'w'}));
+              } catch (error) {
+                if (['ENOSPC','EACCES'].includes(error.code) || attempt === 15) throw error;
+                core.warning('Package connection interrupted; preserving the verified prefix for the next range request');
+                await new Promise(resolve => setTimeout(resolve, 5000));
+              }
+            }
             const digest = crypto.createHash('sha256');
             for await (const chunk of fs.createReadStream(file)) digest.update(chunk);
             if (fs.statSync(file).size !== Number(EXPECTED_SIZE) || digest.digest('hex') !== EXPECTED_SHA) throw Error('Package checksum mismatch');
