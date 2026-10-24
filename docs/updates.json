@@ -1,6 +1,6 @@
 {
   "channel": "stable",
-  "version": "1.1.6",
-  "downloadURL": "https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.6/HongguoMac-1.1.6-universal.dmg",
-  "sha256": "f303ae2a20ad8170bac4212a23df16c3cd64af5e4f98d9bc21898eab353c9be5"
+  "version": "1.2.0",
+  "downloadURL": "https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.2.0/HongguoMac-1.2.0-universal.dmg",
+  "sha256": "b1550df71a30d04617b2ca17c9ef941528bba963ac7002646fa137409bf43664"
 }

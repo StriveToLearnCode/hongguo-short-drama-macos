@@ -8,7 +8,7 @@
 
 红果短剧电脑版（Mac），适用于 macOS 13+，提供 Apple Silicon / Intel 通用 DMG 安装包。
 
-[下载 v1.1.6 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.6/HongguoMac-1.1.6-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.1.6/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v1.2.0 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.2.0/HongguoMac-1.2.0-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.2.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -18,8 +18,17 @@
 
 - **账号与手机片单**：支持红果账号登录，查看收藏、观看历史、点赞和预约；账号云同步处于测试阶段，具体限制见下文。
 - **大屏高清追剧**：在线搜索短剧、分季选集、自动连播；按片源提供最高 1080p 画质。
-- **Mac 桌面播放**：支持最高 3 倍速、全屏和置顶小窗，游客模式的收藏与续播位置保存在本机。
+- **Mac 桌面播放**：支持最高 4 倍速、全屏和置顶小窗，游客模式的收藏与续播位置保存在本机。
 - **直接下载安装**：前往 [GitHub Releases 下载红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest)，或查看 [Mac 版下载与安装指南](https://strivetolearncode.github.io/hongguo-short-drama-macos/#install)。
+
+## 1.2.0｜桌面体验升级
+
+- 重新整理偏好设置：分组导航、深浅外观、弹幕与画面调节、快捷键、缓存用量和启动页。
+- 新增选集离线下载、任务管理、MP4 / 合集导出，以及本机片单搜索、多选、收藏夹和备份。
+- 最高 4 倍速；准备期间使用 2 倍速，失败自动回退。整合拖动进度、自动连播、账号同步、目录与片源保护修复，补齐 180p。
+- 更新包校验后可安装并重启，替换失败恢复旧应用；反馈服务未配置时保留本机未发送记录。
+
+macOS 13+，Apple Silicon / Intel 通用包，build 42。覆盖安装保留本机数据。[发行说明](RELEASE_NOTES.md)。尚未经过 Apple 公证；实体 Intel、macOS 13、国际短信及外部播放设备仍待对应验收。
 
 ## 1.1.6｜多剧切集缓存修复
 
@@ -103,7 +112,7 @@ Mac 登录同一红果账号，可查看收藏、观看历史、预约和点赞�
 - 收藏、观看历史、预约、点赞与账号消息集中查看，评论列表接近底部自动分页。
 - 搜索联想、分享链接直达、分季选集、推荐连播；来源结果可能不完整。
 - 按本集片源选择 1080P、720P、540P 和 360P，具体可用画质取决于来源与设备。
-- 最高 3 倍速、按住加速、全屏与可选置顶小窗；弹幕和深浅色外观可切换。
+- 最高 4 倍速、按住加速、全屏与可选置顶小窗；弹幕和深浅色外观可切换。
 - 下一集预加载、播放重试与缓存整理；来源持续不可用时仍可能播放失败。
 
 ![v1.0.0 账号观看历史](docs/assets/v1.0.0-b33-history.webp)
@@ -112,7 +121,7 @@ Mac 登录同一红果账号，可查看收藏、观看历史、预约和点赞�
 
 macOS 13+，Apple Silicon / Intel 通用包。Apple Silicon 已构建与验收；物理 Intel Mac、macOS 13 和全新 macOS 用户账户仍待实机验证。
 
-1. 下载 v1.1.2 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `e2409cf7e6cc9a238c366985aaad6fc774b6c8ee3e4904961b6dce90992ea6a5`。
+1. 下载 v1.2.0 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `b1550df71a30d04617b2ca17c9ef941528bba963ac7002646fa137409bf43664`。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”，覆盖安装保留已有收藏、历史与设置。
 3. 从“应用程序”启动。安装包采用临时签名，尚未经过 Apple 公证。如果系统仅提示无法验证开发者，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并反馈，不要关闭系统防护。
 4. 首次启动所需组件内置；找剧、播放与账号同步需要联网。
