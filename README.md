@@ -8,7 +8,7 @@
 
 红果短剧电脑版（Mac），适用于 macOS 13+，提供 Apple Silicon / Intel 通用 DMG 安装包。
 
-[下载 v1.2.0 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.2.0/HongguoMac-1.2.0-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.2.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v1.3.0 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.3.0/HongguoMac-1.3.0-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.3.0/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -20,6 +20,15 @@
 - **大屏高清追剧**：在线搜索短剧、分季选集、自动连播；按片源提供最高 1080p 画质。
 - **Mac 桌面播放**：支持最高 4 倍速、全屏和置顶小窗，游客模式的收藏与续播位置保存在本机。
 - **直接下载安装**：前往 [GitHub Releases 下载红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest)，或查看 [Mac 版下载与安装指南](https://strivetolearncode.github.io/hongguo-short-drama-macos/#install)。
+
+## 1.3.0｜简约观看与离线管理
+
+- 侧栏仅保留推荐、找剧和我的片单。沉浸观看默认收起导航与顶栏，左侧边缘可唤出，不挤动视频。
+- 收藏、点赞、预约、历史和离线集中在片单页，新剧和排行榜归入找剧页；反馈位于设置内。
+- 离线下载支持独立目录、整季或从当前集开始下载、按剧分组与批量管理。目录断连或空间不足时暂停并保留记录。
+- 完善预约状态、已上线预约播放及搜索联想，移除不可用的扫码登录入口。
+
+macOS 13+，Apple Silicon / Intel 通用包，build 43。覆盖安装保留本机资料。[发行说明](RELEASE_NOTES.md)。
 
 ## 1.2.0｜桌面体验升级
 
@@ -121,7 +130,7 @@ Mac 登录同一红果账号，可查看收藏、观看历史、预约和点赞�
 
 macOS 13+，Apple Silicon / Intel 通用包。Apple Silicon 已构建与验收；物理 Intel Mac、macOS 13 和全新 macOS 用户账户仍待实机验证。
 
-1. 下载 v1.2.0 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `b1550df71a30d04617b2ca17c9ef941528bba963ac7002646fa137409bf43664`。
+1. 下载 v1.3.0 DMG，可用同版 `SHA256SUMS.txt` 核验；安装包 SHA-256 为 `242aaac038e8bec9f6c9d90d22b9ab06b0af65400bcde821450e6de3a196d312`。
 2. 打开 DMG，将“红果短剧 Mac 版”拖入“应用程序”，覆盖安装保留已有收藏、历史与设置。
 3. 从“应用程序”启动。安装包采用临时签名，尚未经过 Apple 公证。如果系统仅提示无法验证开发者，可在“系统设置 → 隐私与安全性”中针对本应用确认打开。若提示恶意软件或“将损坏你的电脑”，停止安装并反馈，不要关闭系统防护。
 4. 首次启动所需组件内置；找剧、播放与账号同步需要联网。
