@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-27T17:45:37.650028+00:00",
+  "checkedAt": "2026-11-01T06:21:18.317455+00:00",
   "status": "healthy",
   "checks": [
     {
@@ -14,7 +14,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 0.112,
+      "seconds": 0.946,
       "passed": true
     },
     {
@@ -29,7 +29,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 0.058,
+      "seconds": 0.907,
       "passed": true
     },
     {
@@ -44,7 +44,7 @@
         720
       ],
       "resolutionMatches": true,
-      "seconds": 0.041,
+      "seconds": 0.511,
       "passed": true
     },
     {
@@ -59,7 +59,7 @@
         540
       ],
       "resolutionMatches": true,
-      "seconds": 0.029,
+      "seconds": 0.498,
       "passed": true
     },
     {
@@ -74,7 +74,7 @@
         360
       ],
       "resolutionMatches": true,
-      "seconds": 0.027,
+      "seconds": 0.453,
       "passed": true
     },
     {
@@ -89,7 +89,7 @@
         180
       ],
       "resolutionMatches": true,
-      "seconds": 0.027,
+      "seconds": 0.367,
       "passed": true
     },
     {
@@ -104,7 +104,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 0.061,
+      "seconds": 5.059,
       "passed": true
     },
     {
@@ -119,7 +119,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 0.056,
+      "seconds": 5.319,
       "passed": true
     },
     {
@@ -134,7 +134,7 @@
         720
       ],
       "resolutionMatches": true,
-      "seconds": 0.036,
+      "seconds": 2.674,
       "passed": true
     },
     {
@@ -149,7 +149,7 @@
         540
       ],
       "resolutionMatches": true,
-      "seconds": 0.032,
+      "seconds": 2.502,
       "passed": true
     },
     {
@@ -164,7 +164,7 @@
         360
       ],
       "resolutionMatches": true,
-      "seconds": 0.03,
+      "seconds": 1.792,
       "passed": true
     },
     {
@@ -179,11 +179,11 @@
         180
       ],
       "resolutionMatches": true,
-      "seconds": 0.026,
+      "seconds": 1.089,
       "passed": true
     }
   ],
-  "appVersion": "1.3.0",
-  "appBuild": "43",
-  "provenanceDigest": "6e962d13a570a881c1efce00d3fd0023976eb741711e70d133b239fd8d97756a"
+  "appVersion": "1.3.1",
+  "appBuild": "44",
+  "provenanceDigest": "0e86f1c01787dc7f5cffd56e471c6e618e7ef2cba2997dc22adcf3ac23b3d965"
 }
