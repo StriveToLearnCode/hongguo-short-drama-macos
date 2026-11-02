@@ -1,0 +1,85 @@
+name: Receive v1.3.2 verified package
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        type: string
+      sha256:
+        required: true
+        type: string
+      size:
+        required: true
+        type: string
+      download_url:
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Verify immutable package and upload to existing draft
+        uses: actions/github-script@v7
+        env:
+          VERSION: ${{ inputs.version }}
+          EXPECTED_SHA: ${{ inputs.sha256 }}
+          EXPECTED_SIZE: ${{ inputs.size }}
+          DOWNLOAD_URL: ${{ inputs.download_url }}
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            const crypto = require('node:crypto');
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const https = require('node:https');
+            const cp = require('node:child_process');
+            const {pipeline} = require('node:stream/promises');
+            const { VERSION, EXPECTED_SHA, EXPECTED_SIZE, DOWNLOAD_URL } = process.env;
+            if (!/^\d+\.\d+\.\d+$/.test(VERSION) || !/^[a-f0-9]{64}$/.test(EXPECTED_SHA) || !/^\d{1,10}$/.test(EXPECTED_SIZE) || Number(EXPECTED_SIZE) > 2000000000) throw Error('Invalid transfer inputs');
+            const filename = `HongguoMac-${VERSION}-universal.dmg`;
+            const url = new URL(DOWNLOAD_URL);
+            if (url.protocol !== 'https:' || (VERSION !== '1.3.2' || EXPECTED_SHA !== 'b1a458bba574e51554eefbf2554136da265d2961f83a28491e580348964f8025' || url.hostname !== '5651f3053adf30.lhr.life') || url.port || url.username || url.password || url.search || url.hash || !new RegExp(`^/[a-f0-9]{32}/${filename.replaceAll('.','\\.')}$`).test(url.pathname)) throw Error('Unexpected temporary download origin or path');
+            const repo = context.repo;
+            const release = (await github.paginate(github.rest.repos.listReleases, repo)).find(item => item.tag_name === `v${VERSION}`);
+            if (!release?.draft || release.prerelease) throw Error('Expected an existing stable draft');
+            const old = release.assets.find(item => item.name === filename);
+            if (old) {
+              if (old.digest === `sha256:${EXPECTED_SHA}` && old.size === Number(EXPECTED_SIZE) && old.state === 'uploaded') { core.info('The exact package already exists in the draft'); return; }
+              throw Error('An asset already exists; inspect before replacing');
+            }
+            const file = path.join(process.env.RUNNER_TEMP, filename);
+            for (let attempt = 0; attempt < 16; attempt++) {
+              const offset = fs.existsSync(file) ? fs.statSync(file).size : 0;
+              if (offset === Number(EXPECTED_SIZE)) break;
+              if (offset > Number(EXPECTED_SIZE)) throw Error('Unexpected partial file size');
+              try {
+                core.info(`Receiving package from byte ${offset} of ${EXPECTED_SIZE}`);
+                const response = await new Promise((resolve,reject) => {
+                  const request = https.get(url, {headers: offset ? {Range:`bytes=${offset}-${Number(EXPECTED_SIZE)-1}`} : {}}, resolve);
+                  request.setTimeout(120000, () => request.destroy(Error('Download connection idle timeout')));
+                  request.on('error',reject);
+                });
+                const validRange = !offset || response.headers['content-range'] === `bytes ${offset}-${Number(EXPECTED_SIZE)-1}/${EXPECTED_SIZE}`;
+                if (response.statusCode !== (offset ? 206 : 200) || Number(response.headers['content-length']) !== Number(EXPECTED_SIZE)-offset || !validRange) {
+                  response.destroy(); throw Error('Unexpected package response');
+                }
+                await pipeline(response, fs.createWriteStream(file, {flags:offset ? 'a' : 'w'}));
+              } catch (error) {
+                if (['ENOSPC','EACCES'].includes(error.code) || attempt === 15) throw error;
+                core.warning('Package connection interrupted; preserving the verified prefix for the next range request');
+                await new Promise(resolve => setTimeout(resolve, 5000));
+              }
+            }
+            const digest = crypto.createHash('sha256');
+            for await (const chunk of fs.createReadStream(file)) digest.update(chunk);
+            if (fs.statSync(file).size !== Number(EXPECTED_SIZE) || digest.digest('hex') !== EXPECTED_SHA) throw Error('Package checksum mismatch');
+            const current = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+            if (!current.draft || current.assets.some(item => item.name === filename)) throw Error('Draft changed during transfer');
+            cp.execFileSync('gh',['release','upload',`v${VERSION}`,file,'--repo',`${repo.owner}/${repo.repo}`], {stdio:'inherit'});
+            const result = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+            const asset = result.assets.find(item => item.name === filename);
+            if (!result.draft || !asset || asset.size !== Number(EXPECTED_SIZE) || asset.digest !== `sha256:${EXPECTED_SHA}` || asset.state !== 'uploaded') throw Error('GitHub asset verification failed');
+            core.info('The original verified package is in the draft. Stable publication remains a separate gated step.');
