@@ -8,7 +8,7 @@
 
 红果短剧电脑版（Mac），适用于 macOS 13+，提供 Apple Silicon / Intel 通用 DMG 安装包。
 
-[下载 v1.3.1 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.3.1/HongguoMac-1.3.1-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.3.1/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
+[下载 v1.3.2 完整 DMG](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.3.2/HongguoMac-1.3.2-universal.dmg) · [项目官网](https://strivetolearncode.github.io/hongguo-short-drama-macos/) · [校验文件](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v1.3.2/SHA256SUMS.txt) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)
 
 </div>
 
@@ -20,6 +20,14 @@
 - **大屏高清追剧**：在线搜索短剧、分季选集、自动连播；按片源提供最高 1080p 画质。
 - **Mac 桌面播放**：支持最高 4 倍速、全屏和置顶小窗，游客模式的收藏与续播位置保存在本机。
 - **直接下载安装**：前往 [GitHub Releases 下载红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest)，或查看 [Mac 版下载与安装指南](https://strivetolearncode.github.io/hongguo-short-drama-macos/#install)。
+
+## 1.3.2｜播放取址与切换等待修复
+
+- 更新在线播放、播放地址与离线下载取址，修复旧接口空响应或 `110001` 导致的播放失败。
+- 修复取消后的预加载仍转为完整下载和选集重复准备，复用经实际分辨率校验的自动 / 1080p 缓存，减少切换等待。
+- 加固 Intel 安装和组件校验。最终安装包 12 项播放及游客、目录、账号三路推荐均通过，原 Issue 第 65 集整集解码通过。
+
+macOS 13+，Apple Silicon / Intel 通用包，build 45。覆盖安装保留本机资料。未缓存剧集仍受网络影响，实体 Intel 仍待实机验收。[发行说明](RELEASE_NOTES.md)。
 
 ## 1.3.1｜完整片源与播放中断修复
 
