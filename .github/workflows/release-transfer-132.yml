@@ -34,16 +34,16 @@ jobs:
             const response = await fetch(new URL('manifest.json', base), {redirect:'error', signal:AbortSignal.timeout(30000)});
             if (!response.ok) throw Error('Manifest unavailable');
             const text = await response.text();
-            if (text.length > 16384) throw Error('Manifest too large');
+            if (text.length > 131072) throw Error('Manifest too large');
             const manifest = JSON.parse(text);
-            if (manifest.filename !== filename || manifest.sha256 !== expectedSHA || !Number.isSafeInteger(manifest.size) || manifest.size > 400000000 || !Array.isArray(manifest.parts) || manifest.parts.length !== 16) throw Error('Unexpected manifest');
+            if (manifest.filename !== filename || manifest.sha256 !== expectedSHA || !Number.isSafeInteger(manifest.size) || manifest.size > 400000000 || !Array.isArray(manifest.parts) || manifest.parts.length !== 301) throw Error('Unexpected manifest');
             if (manifest.parts.reduce((size, part) => size + part.size, 0) !== manifest.size) throw Error('Invalid total size');
             let next = 0;
             const receive = async () => {
               while (next < manifest.parts.length) {
                 const index = next++;
                 const part = manifest.parts[index];
-                if (part.name !== `part-${String(index).padStart(3,'0')}.bin` || !Number.isSafeInteger(part.size) || part.size <= 0 || part.size > 20971520 || !/^[a-f0-9]{64}$/.test(part.sha256)) throw Error('Invalid chunk');
+                if (part.name !== `part-${String(index).padStart(3,'0')}.bin` || !Number.isSafeInteger(part.size) || part.size <= 0 || part.size > 1048576 || !/^[a-f0-9]{64}$/.test(part.sha256)) throw Error('Invalid chunk');
                 let accepted = false;
                 for (let attempt = 0; attempt < 3; attempt++) {
                   try {
@@ -52,7 +52,7 @@ jobs:
                     const bytes = Buffer.from(await reply.arrayBuffer());
                     if (bytes.length !== part.size || crypto.createHash('sha256').update(bytes).digest('hex') !== part.sha256) throw Error('Chunk hash mismatch');
                     fs.writeFileSync(path.join(process.env.RUNNER_TEMP, part.name), bytes);
-                    accepted = true; core.info(`Verified chunk ${index+1}/16`); break;
+                    accepted = true; core.info(`Verified chunk ${index+1}/301`); break;
                   } catch (error) { if (attempt === 2) throw error; }
                 }
                 if (!accepted) throw Error('Chunk unavailable');
