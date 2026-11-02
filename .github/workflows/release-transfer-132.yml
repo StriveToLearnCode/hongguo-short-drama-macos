@@ -19,7 +19,7 @@ jobs:
             const path = require('node:path');
             const cp = require('node:child_process');
             const base = 'https://hongguo-release-transfer-132.pages.dev/';
-            const expectedSHA = 'b1a458bba574e51554eefbf2554136da265d2961f83a28491e580348964f8025';
+            const expectedSHA = 'c598f1a7d15e41e9eb02781cb1ead20acc33005e8f2c584f14b93ef1935aec8b';
             const filename = 'HongguoMac-1.3.2-universal.dmg';
             const tag = 'v1.3.2';
             const repo = context.repo;
