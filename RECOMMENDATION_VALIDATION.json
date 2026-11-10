@@ -1,20 +1,20 @@
 {
-  "checkedAt": "2026-11-01T06:21:26.345635+00:00",
+  "checkedAt": "2026-11-10T15:04:14.137836+00:00",
   "status": "degraded",
   "checks": [
     {
       "source": "guest",
       "passed": true,
       "pages": 2,
-      "items": 10,
-      "seconds": 14.884
+      "items": 11,
+      "seconds": 10.961
     },
     {
       "source": "catalog",
       "passed": true,
       "pages": 2,
       "items": 36,
-      "seconds": 2.798
+      "seconds": 2.911
     },
     {
       "source": "account",
@@ -22,7 +22,7 @@
       "reason": "not_configured"
     }
   ],
-  "appVersion": "1.3.1",
-  "appBuild": "44",
-  "provenanceDigest": "0e86f1c01787dc7f5cffd56e471c6e618e7ef2cba2997dc22adcf3ac23b3d965"
+  "appVersion": "1.3.4",
+  "appBuild": "47",
+  "provenanceDigest": "45a31d67019d49aae678683d63d0e55696f858cced4208f25483065f06fb5367"
 }
