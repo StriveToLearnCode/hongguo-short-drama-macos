@@ -1,0 +1,203 @@
+{
+  "checkedAt": "2026-11-11T14:57:03.284732+00:00",
+  "status": "healthy",
+  "scope": "model_and_playable_media",
+  "checks": [
+    {
+      "sample": 1,
+      "quality": "best",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "resolutionMatches": true,
+      "seconds": 2.391,
+      "passed": true
+    },
+    {
+      "sample": 1,
+      "quality": "1080p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "resolutionMatches": true,
+      "seconds": 0.068,
+      "passed": true
+    },
+    {
+      "sample": 1,
+      "quality": "720p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "resolutionMatches": true,
+      "seconds": 0.576,
+      "passed": true
+    },
+    {
+      "sample": 1,
+      "quality": "540p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        960,
+        540
+      ],
+      "resolutionMatches": true,
+      "seconds": 0.539,
+      "passed": true
+    },
+    {
+      "sample": 1,
+      "quality": "360p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        640,
+        360
+      ],
+      "resolutionMatches": true,
+      "seconds": 0.413,
+      "passed": true
+    },
+    {
+      "sample": 1,
+      "quality": "180p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        320,
+        180
+      ],
+      "resolutionMatches": true,
+      "seconds": 0.699,
+      "passed": true
+    },
+    {
+      "sample": 2,
+      "quality": "best",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "resolutionMatches": true,
+      "seconds": 5.323,
+      "passed": true
+    },
+    {
+      "sample": 2,
+      "quality": "1080p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "resolutionMatches": true,
+      "seconds": 0.075,
+      "passed": true
+    },
+    {
+      "sample": 2,
+      "quality": "720p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "resolutionMatches": true,
+      "seconds": 2.837,
+      "passed": true
+    },
+    {
+      "sample": 2,
+      "quality": "540p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        960,
+        540
+      ],
+      "resolutionMatches": true,
+      "seconds": 2.768,
+      "passed": true
+    },
+    {
+      "sample": 2,
+      "quality": "360p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        640,
+        360
+      ],
+      "resolutionMatches": true,
+      "seconds": 2.298,
+      "passed": true
+    },
+    {
+      "sample": 2,
+      "quality": "180p",
+      "available": true,
+      "mediaWasCached": false,
+      "httpStatus": 206,
+      "rangeValid": true,
+      "decoded": true,
+      "dimensions": [
+        320,
+        180
+      ],
+      "resolutionMatches": true,
+      "seconds": 2.785,
+      "passed": true
+    }
+  ],
+  "appVersion": "1.3.5",
+  "appBuild": "48",
+  "cdnConnectivityVerified": false,
+  "provenanceDigest": "68b5d2f5a54e49213dbf52588cd14b75e3b3fa2246a70fa97619b9b33956e256"
+}

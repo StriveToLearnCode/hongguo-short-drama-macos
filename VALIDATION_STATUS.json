@@ -1,23 +1,26 @@
 {
   "schemaVersion": 1,
-  "version": "1.3.4",
-  "build": "47",
-  "createdAt": "2026-11-10T15:13:11.032787+00:00",
-  "provenanceDigest": "45a31d67019d49aae678683d63d0e55696f858cced4208f25483065f06fb5367",
-  "dmgSHA256": "f9f730d3f88e188a03083c1310652d6f8752f0aeaee861b7ca4a7913365626d1",
+  "version": "1.3.5",
+  "build": "48",
+  "createdAt": "2026-11-11T15:01:58.508332+00:00",
+  "provenanceDigest": "68b5d2f5a54e49213dbf52588cd14b75e3b3fa2246a70fa97619b9b33956e256",
+  "dmgSHA256": "caeeeb709f7e7294319305949cb415599a88f1d22bc588ac77e0d6c5d0b4b2d1",
   "decision": "publish_with_disclosed_validation_limit",
-  "authorization": "Maintainer explicitly approved: 允许按已披露限制发布 v1.3.4",
+  "authorization": "Maintainer requested publication of this repair release: 先发一版吧. The existing account-validation limitation was previously disclosed and approved; it remains disclosed for this release.",
   "waivedCheck": {
     "source": "account",
     "reportedStatus": "not_configured",
     "finalCandidateTested": false,
-    "reason": "The current account is not verified; the platform has paused automatic synchronization. Guest results were not substituted."
+    "reason": "No verified account is available; anonymous device context is reused only for guest recommendations. No guest result is reported as account success."
   },
   "unchangedRequirements": [
-    "complete live playback quality matrix",
+    "fresh production model and media from empty runtime",
+    "both regression samples in real WKWebView including ByteVC2",
+    "complete media decode and native seek/pause/automatic next",
+    "complete 12-item quality matrix",
     "guest and catalog recommendation checks",
-    "candidate version/build/provenance/time match",
-    "uploaded artifact byte size and SHA-256 match"
+    "matching version/build/provenance and report age",
+    "remote attachment sizes and SHA-256"
   ],
   "strictDefaultReleaseGateUnchanged": true
 }

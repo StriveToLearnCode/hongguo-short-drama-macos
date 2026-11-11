@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-11-11T14:55:51.685008+00:00",
+  "status": "healthy",
+  "appVersion": "1.3.5",
+  "appBuild": "48",
+  "provenanceDigest": "68b5d2f5a54e49213dbf52588cd14b75e3b3fa2246a70fa97619b9b33956e256",
+  "checks": [
+    {
+      "actualWKWebViewPlayback": true,
+      "automaticNextEpisode": true,
+      "cachedReopen": true,
+      "cachedReopenSeconds": 4.404094099998474,
+      "codecConversion": false,
+      "coldFirstFrameSeconds": 11.491283893585205,
+      "episode": 11,
+      "seekPauseResume": true,
+      "seriesId": "7697459724635098174",
+      "videoId": "7697465970498997273",
+      "rangeValid": true,
+      "fullDecode": true,
+      "mediaBytes": 6009513
+    },
+    {
+      "actualWKWebViewPlayback": true,
+      "automaticNextEpisode": true,
+      "cachedReopen": true,
+      "cachedReopenSeconds": 4.288885951042175,
+      "codecConversion": true,
+      "coldFirstFrameSeconds": 25.086102962493896,
+      "episode": 1,
+      "seekPauseResume": true,
+      "seriesId": "7704134160679455768",
+      "videoId": "7704134166832483352",
+      "rangeValid": true,
+      "fullDecode": true,
+      "mediaBytes": 11872096
+    }
+  ],
+  "guestDeviceReused": true,
+  "isolatedRuntime": true,
+  "initiallyEmptyMediaCache": true,
+  "freshProductionBackend": true,
+  "modelSnapshots": false,
+  "noJavaScriptErrors": true
+}

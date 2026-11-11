@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "version": "1.3.5",
+  "build": "48",
+  "checkedAt": "2026-11-11T15:53:50.355212+00:00",
+  "releaseURL": "https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v1.3.5",
+  "releaseID": 441831686,
+  "publishedAt": "2026-11-11T15:53:45Z",
+  "latestStableVerified": true,
+  "remoteAssets": [
+    {
+      "name": "updates.json",
+      "bytes": 267,
+      "digest": "sha256:f2786329b508d505510d57218e73a40550d78883b785e77116a13d2f0662716b",
+      "state": "uploaded"
+    },
+    {
+      "name": "build-provenance.json",
+      "bytes": 9622,
+      "digest": "sha256:68b5d2f5a54e49213dbf52588cd14b75e3b3fa2246a70fa97619b9b33956e256",
+      "state": "uploaded"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 97,
+      "digest": "sha256:ca06cccbfbd4f60527201a4f00a72e68a4bf81cccbe884894cc995e196d57af4",
+      "state": "uploaded"
+    },
+    {
+      "name": "HongguoMac-1.3.5-universal.dmg",
+      "bytes": 341675075,
+      "digest": "sha256:caeeeb709f7e7294319305949cb415599a88f1d22bc588ac77e0d6c5d0b4b2d1",
+      "state": "uploaded"
+    }
+  ],
+  "remoteAssetSizesAndDigestsMatchLocal": true,
+  "publicDownloads": {
+    "dmgRangeHTTPStatus": 206,
+    "dmgPrefixBytesMatched": 32,
+    "checksumMatchesLocal": true,
+    "manifestMatchesLocal": true,
+    "fullDMGRedownloaded": false
+  },
+  "transferWorkflow": "https://github.com/StriveToLearnCode/hongguo-short-drama-macos/actions/runs/43049073998",
+  "authorizationRecord": "publication-decision.json",
+  "strictDefaultReleaseGateUnchanged": true
+}

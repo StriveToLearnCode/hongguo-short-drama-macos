@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-10T14:57:18.623363+00:00",
+  "checkedAt": "2026-11-11T14:57:03.284732+00:00",
   "status": "healthy",
   "scope": "model_and_playable_media",
   "checks": [
@@ -16,7 +16,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 1.944,
+      "seconds": 2.391,
       "passed": true
     },
     {
@@ -32,7 +32,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 0.074,
+      "seconds": 0.068,
       "passed": true
     },
     {
@@ -48,7 +48,7 @@
         720
       ],
       "resolutionMatches": true,
-      "seconds": 0.685,
+      "seconds": 0.576,
       "passed": true
     },
     {
@@ -64,7 +64,7 @@
         540
       ],
       "resolutionMatches": true,
-      "seconds": 0.667,
+      "seconds": 0.539,
       "passed": true
     },
     {
@@ -80,7 +80,7 @@
         360
       ],
       "resolutionMatches": true,
-      "seconds": 0.439,
+      "seconds": 0.413,
       "passed": true
     },
     {
@@ -96,7 +96,7 @@
         180
       ],
       "resolutionMatches": true,
-      "seconds": 1.913,
+      "seconds": 0.699,
       "passed": true
     },
     {
@@ -112,7 +112,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 8.971,
+      "seconds": 5.323,
       "passed": true
     },
     {
@@ -128,7 +128,7 @@
         1080
       ],
       "resolutionMatches": true,
-      "seconds": 0.084,
+      "seconds": 0.075,
       "passed": true
     },
     {
@@ -144,7 +144,7 @@
         720
       ],
       "resolutionMatches": true,
-      "seconds": 4.803,
+      "seconds": 2.837,
       "passed": true
     },
     {
@@ -160,7 +160,7 @@
         540
       ],
       "resolutionMatches": true,
-      "seconds": 7.225,
+      "seconds": 2.768,
       "passed": true
     },
     {
@@ -176,7 +176,7 @@
         360
       ],
       "resolutionMatches": true,
-      "seconds": 4.734,
+      "seconds": 2.298,
       "passed": true
     },
     {
@@ -192,12 +192,12 @@
         180
       ],
       "resolutionMatches": true,
-      "seconds": 5.656,
+      "seconds": 2.785,
       "passed": true
     }
   ],
-  "appVersion": "1.3.4",
-  "appBuild": "47",
+  "appVersion": "1.3.5",
+  "appBuild": "48",
   "cdnConnectivityVerified": false,
-  "provenanceDigest": "45a31d67019d49aae678683d63d0e55696f858cced4208f25483065f06fb5367"
+  "provenanceDigest": "68b5d2f5a54e49213dbf52588cd14b75e3b3fa2246a70fa97619b9b33956e256"
 }
