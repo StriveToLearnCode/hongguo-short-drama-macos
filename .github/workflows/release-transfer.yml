@@ -41,7 +41,7 @@ jobs:
             if (!/^\d+\.\d+\.\d+$/.test(VERSION) || !/^[a-f0-9]{64}$/.test(EXPECTED_SHA) || !/^\d{1,10}$/.test(EXPECTED_SIZE) || Number(EXPECTED_SIZE) > 2000000000) throw Error('Invalid transfer inputs');
             const filename = `HongguoMac-${VERSION}-universal.dmg`;
             const url = new URL(DOWNLOAD_URL);
-            if (url.protocol !== 'https:' || !(url.hostname.endsWith('.trycloudflare.com') || /^[a-f0-9]{14}\.lhr\.life$/.test(url.hostname)) || url.port || url.username || url.password || url.search || url.hash || !new RegExp(`^/[a-f0-9]{32}/${filename.replaceAll('.','\\.')}$`).test(url.pathname)) throw Error('Unexpected temporary download origin or path');
+            if (url.protocol !== 'https:' || !url.hostname.endsWith('.trycloudflare.com') || url.port || url.username || url.password || url.search || url.hash || !new RegExp(`^/[a-f0-9]{32}/${filename.replaceAll('.','\\.')}$`).test(url.pathname)) throw Error('Unexpected temporary download origin or path');
             const repo = context.repo;
             const release = (await github.paginate(github.rest.repos.listReleases, repo)).find(item => item.tag_name === `v${VERSION}`);
             if (!release?.draft || release.prerelease) throw Error('Expected an existing stable draft');
