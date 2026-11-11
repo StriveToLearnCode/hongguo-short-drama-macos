@@ -1,0 +1,107 @@
+name: Receive final verified installer
+on:
+  workflow_dispatch:
+    inputs:
+      version: {required: true, type: string}
+      sha256: {required: true, type: string}
+      size: {required: true, type: string}
+permissions:
+  contents: write
+jobs:
+  receive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Receive chunks and verify the original package before uploading to the draft
+        uses: actions/github-script@v7
+        env:
+          VERSION: ${{ inputs.version }}
+          EXPECTED_SHA: ${{ inputs.sha256 }}
+          EXPECTED_SIZE: ${{ inputs.size }}
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const http = require('node:http');
+            const crypto = require('node:crypto');
+            const cp = require('node:child_process');
+            const {VERSION, EXPECTED_SHA, EXPECTED_SIZE} = process.env;
+            if (!/^\d+\.\d+\.\d+$/.test(VERSION) || !/^[a-f0-9]{64}$/.test(EXPECTED_SHA) || !/^\d+$/.test(EXPECTED_SIZE) || Number(EXPECTED_SIZE) > 2000000000 || Number(EXPECTED_SIZE) <= 0) throw Error('Invalid inputs');
+            const repo = context.repo;
+            const release = (await github.paginate(github.rest.repos.listReleases, repo)).find(r => r.tag_name === `v${VERSION}`);
+            if (!release?.draft || release.prerelease) throw Error('Expected an existing stable draft');
+            const filename = `HongguoMac-${VERSION}-universal.dmg`;
+            const existing = release.assets.find(a => a.name === filename);
+            if (existing) {
+              if (existing.state === 'uploaded' && existing.size === Number(EXPECTED_SIZE) && existing.digest === `sha256:${EXPECTED_SHA}`) return;
+              throw Error('Existing package does not match');
+            }
+            const work = fs.mkdtempSync(path.join(process.env.RUNNER_TEMP, 'receive-release-'));
+            const cliRelease = (await github.rest.repos.getLatestRelease({owner:'cloudflare', repo:'cloudflared'})).data;
+            const binaryAsset = cliRelease.assets.find(a => a.name === 'cloudflared-linux-amd64');
+            if (!binaryAsset?.digest?.startsWith('sha256:')) throw Error('Missing tunnel binary digest');
+            const response = await fetch(binaryAsset.browser_download_url);
+            if (!response.ok) throw Error('Tunnel binary download failed');
+            const binary = Buffer.from(await response.arrayBuffer());
+            if (`sha256:${crypto.createHash('sha256').update(binary).digest('hex')}` !== binaryAsset.digest) throw Error('Tunnel binary checksum mismatch');
+            const cli = path.join(work, 'cloudflared'); fs.writeFileSync(cli, binary, {mode:0o700});
+            const token = crypto.randomBytes(32).toString('hex');
+            const chunkSize = 32 * 1024 * 1024, count = Math.ceil(Number(EXPECTED_SIZE) / chunkSize);
+            const received = new Set(), writing = new Set();
+            const server = http.createServer(async (req, res) => {
+              try {
+                const match = new RegExp(`^/${token}/(\\d+)$`).exec(req.url);
+                if (req.method !== 'PUT' || !match) { res.writeHead(404); res.end(); return; }
+                const index = Number(match[1]);
+                const length = Math.min(chunkSize, Number(EXPECTED_SIZE) - index * chunkSize);
+                const expectedHash = req.headers['x-chunk-sha256'];
+                if (index < 0 || index >= count || Number(req.headers['content-length']) !== length || !/^[a-f0-9]{64}$/.test(expectedHash || '')) { res.writeHead(400); res.end(); return; }
+                if (writing.has(index)) { res.writeHead(409); res.end(); return; }
+                writing.add(index);
+                try {
+                  const chunks = []; let bytes = 0;
+                  for await (const chunk of req) { bytes += chunk.length; if (bytes > length) throw Error('Oversized chunk'); chunks.push(chunk); }
+                  const body = Buffer.concat(chunks);
+                  if (body.length !== length || crypto.createHash('sha256').update(body).digest('hex') !== expectedHash) throw Error('Chunk mismatch');
+                  fs.writeFileSync(path.join(work, `part-${index}`), body);
+                  received.add(index); core.info(`Received ${received.size}/${count} verified chunks`);
+                  res.writeHead(200); res.end('verified');
+                } finally { writing.delete(index); }
+              } catch { if (!res.headersSent) res.writeHead(400); res.end(); }
+            });
+            let tunnel, endpointAsset;
+            try {
+              await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+              tunnel = cp.spawn(cli, ['tunnel','--url',`http://127.0.0.1:${server.address().port}`,'--protocol','http2','--no-autoupdate']);
+              const origin = await new Promise((resolve,reject) => {
+                const timer = setTimeout(() => reject(Error('Tunnel startup timeout')), 120000);
+                const parse = data => { const m = data.toString().match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/); if (m) {clearTimeout(timer); resolve(m[0]);} };
+                tunnel.stdout.on('data',parse); tunnel.stderr.on('data',parse);
+                tunnel.on('exit',() => {clearTimeout(timer); reject(Error('Tunnel exited'));});
+              });
+              const endpointFile = path.join(work, `transfer-receiver-${VERSION}.json`);
+              fs.writeFileSync(endpointFile, JSON.stringify({version:VERSION,sha256:EXPECTED_SHA,size:Number(EXPECTED_SIZE),chunkSize,count,endpoint:`${origin}/${token}`}));
+              cp.execFileSync('gh',['release','upload',`v${VERSION}`,endpointFile,'--repo',`${repo.owner}/${repo.repo}`],{stdio:'inherit'});
+              const metadata = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+              endpointAsset = metadata.assets.find(a => a.name === path.basename(endpointFile));
+              if (!endpointAsset) throw Error('Receiver metadata missing');
+              core.info('Receiver ready; waiting for verified chunks');
+              const deadline = Date.now() + 25 * 60 * 1000;
+              while (received.size !== count && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve,1000));
+              if (received.size !== count) throw Error('Receiver timed out');
+              const file = path.join(work, filename); const digest = crypto.createHash('sha256');
+              for (let index = 0; index < count; index++) { const body = fs.readFileSync(path.join(work,`part-${index}`)); digest.update(body); fs.appendFileSync(file,body); }
+              if (fs.statSync(file).size !== Number(EXPECTED_SIZE) || digest.digest('hex') !== EXPECTED_SHA) throw Error('Final checksum mismatch');
+              const current = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+              if (!current.draft || current.assets.some(a => a.name === filename)) throw Error('Draft changed');
+              cp.execFileSync('gh',['release','upload',`v${VERSION}`,file,'--repo',`${repo.owner}/${repo.repo}`],{stdio:'inherit'});
+              const uploaded = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
+              const asset = uploaded.assets.find(a => a.name === filename);
+              if (!uploaded.draft || asset?.state !== 'uploaded' || asset.size !== Number(EXPECTED_SIZE) || asset.digest !== `sha256:${EXPECTED_SHA}`) throw Error('Uploaded package mismatch');
+              core.info('Original verified package uploaded; release remains a draft');
+            } finally {
+              if (endpointAsset) await github.rest.repos.deleteReleaseAsset({...repo,asset_id:endpointAsset.id});
+              tunnel?.kill(); server.close();
+              fs.rmSync(work,{recursive:true,force:true});
+            }
