@@ -43,5 +43,13 @@
   },
   "transferWorkflow": "https://github.com/StriveToLearnCode/hongguo-short-drama-macos/actions/runs/43049073998",
   "authorizationRecord": "publication-decision.json",
-  "strictDefaultReleaseGateUnchanged": true
+  "strictDefaultReleaseGateUnchanged": true,
+  "website": {
+    "url": "https://strivetolearncode.github.io/hongguo-short-drama-macos/",
+    "pagesCommit": "45a1048ff02a86fa28f41d18cc1aed0c0e146f82",
+    "pagesStatus": "built",
+    "canonicalIndexMatchesLocal": true,
+    "canonicalManifestMatchesLocal": true,
+    "indexSHA256": "d7de8a59c93c2f261694de2c1105058c3aa2a2731cb7151f97fc1ba77fb5482b"
+  }
 }

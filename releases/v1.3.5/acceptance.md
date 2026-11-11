@@ -37,4 +37,4 @@ python3 scripts/check_release_health.py
 
 实体 Intel、macOS 13 与外接显示器实际拔插未实机验收；当前包未经过 Apple 公证。第三方接口变化仍可能导致未来失败，首次下载与转换仍需等待。本次实测不能保证所有剧集或未来永久可用。
 
-包信息见[package-verification.json](package-verification.json)。远端发布和官网核对结果另记入 publication-verification.json。
+包信息见[package-verification.json](package-verification.json)。远端附件、公开下载、官网和更新清单均已核对，见[发布校验记录](publication-verification.json)。
