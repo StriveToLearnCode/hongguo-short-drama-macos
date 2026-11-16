@@ -1,0 +1,33 @@
+{
+  "version": "1.3.6",
+  "build": "49",
+  "dmgBytes": 342667628,
+  "dmgSHA256": "69afb21eefa1cdf524be2ba1fd93214c3e2393d202d4a4b5651f5156603e095a",
+  "provenanceDigest": "aff0cef95d6471b15c0dab7a88a7c31a1c8997e76c390601b0b515ad845caf0b",
+  "architectures": [
+    "arm64",
+    "x86_64"
+  ],
+  "adHocSignatureVerified": true,
+  "dmgReadOnlyMounted": true,
+  "python": {
+    "total": 658,
+    "passed": 607,
+    "skipped": 51
+  },
+  "javascript": {
+    "passed": 82
+  },
+  "telemetry": {
+    "passed": 30
+  },
+  "offlineInstallationAndRollback": true,
+  "nativeUpdateAndMiniWindowTests": true,
+  "externalComponentsDownloaded": false,
+  "remoteExactReconstruction": {
+    "baselineVersion": "1.3.5",
+    "deltaBytes": 17544967,
+    "originalDMGHashPreserved": true,
+    "workflow": "https://github.com/StriveToLearnCode/hongguo-short-drama-macos/actions/runs/43899199223"
+  }
+}
