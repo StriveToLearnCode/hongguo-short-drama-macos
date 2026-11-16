@@ -1,0 +1,91 @@
+name: Reconstruct verified v1.3.6 installer
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Reconstruct exact accepted installer from published baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          python3 - <<'PYCODE'
+          from pathlib import Path
+          import gzip,hashlib,json,os,struct,subprocess,tempfile,urllib.request
+          repo=os.environ['GH_REPO'];version='1.3.6';filename='HongguoMac-1.3.6-universal.dmg'
+          expected_size=342667628;expected_sha='69afb21eefa1cdf524be2ba1fd93214c3e2393d202d4a4b5651f5156603e095a'
+          patch_name='HongguoMac-1.3.6-from-1.3.5.delta.gz';patch_sha='b71774ca22fdc466e97bdf84fb8d152462489dc2a5b11a4fa0008b4273ddd9f2'
+          baseline_sha='caeeeb709f7e7294319305949cb415599a88f1d22bc588ac77e0d6c5d0b4b2d1';baseline_size=341675075
+          
+          def gh(*args):return json.loads(subprocess.check_output(['gh',*args]))
+          def release():return next(r for r in gh('api',f'repos/{repo}/releases?per_page=100') if r['tag_name']=='v'+version)
+          def sha(path):
+           h=hashlib.sha256()
+           with path.open('rb') as f:
+            for data in iter(lambda:f.read(1024*1024),b''):h.update(data)
+           return h.hexdigest()
+          def valid(a):return a.get('state')=='uploaded' and a.get('size')==expected_size and a.get('digest')=='sha256:'+expected_sha
+          
+          def main():
+           r=release()
+           if not r['draft'] or r['prerelease']:raise ValueError('Expected stable draft')
+           old=next((a for a in r['assets'] if a['name']==filename),None)
+           if old:
+            if valid(old):print('Exact original installer already present');return
+            raise ValueError('Unexpected existing installer')
+           asset=next(a for a in r['assets'] if a['name']==patch_name)
+           if asset['size']!=17544967 or asset['digest']!='sha256:'+patch_sha or asset['state']!='uploaded':raise ValueError('Delta attachment differs')
+           with tempfile.TemporaryDirectory(prefix='exact-release-reconstruction-') as t:
+            work=Path(t);patch=work/patch_name;base=work/'baseline.dmg';output=work/filename
+            with patch.open('wb') as f:subprocess.run(['gh','api',f'repos/{repo}/releases/assets/{asset["id"]}','-H','Accept: application/octet-stream'],stdout=f,check=True)
+            if sha(patch)!=patch_sha:raise ValueError('Delta download digest mismatch')
+            print('Verified delta attachment',flush=True)
+            url='https://github.com/'+repo+'/releases/download/v1.3.5/HongguoMac-1.3.5-universal.dmg'
+            with urllib.request.urlopen(url,timeout=180) as response,base.open('wb') as f:
+             total=0
+             while True:
+              data=response.read(1024*1024)
+              if not data:break
+              total+=len(data)
+              if total>baseline_size:raise ValueError('Oversized baseline')
+              f.write(data)
+            if base.stat().st_size!=baseline_size or sha(base)!=baseline_sha:raise ValueError('Published baseline differs')
+            print('Verified immutable v1.3.5 baseline',flush=True)
+            with base.open('rb') as b,gzip.open(patch,'rb') as p,output.open('wb') as target:
+             if p.read(8)!=b'HGDIFF1\0' or struct.unpack('<Q',p.read(8))[0]!=expected_size:raise ValueError('Invalid delta header')
+             written=0
+             for operation in range(500000):
+              op=p.read(1)
+              if op==b'\0':break
+              if op==b'C':
+               offset,length=struct.unpack('<QQ',p.read(16))
+               if offset+length>baseline_size:raise ValueError('Copy outside baseline')
+               b.seek(offset);reader=b
+              elif op==b'D':length=struct.unpack('<Q',p.read(8))[0];reader=p
+              else:raise ValueError('Invalid delta operation')
+              if not 0<length<=expected_size-written:raise ValueError('Invalid output size')
+              remaining=length
+              while remaining:
+               data=reader.read(min(1024*1024,remaining))
+               if not data:raise ValueError('Truncated delta or baseline')
+               target.write(data);remaining-=len(data)
+              written+=length
+             else:raise ValueError('Too many delta operations')
+             if written!=expected_size or p.read(1):raise ValueError('Incomplete or trailing delta data')
+            if output.stat().st_size!=expected_size or sha(output)!=expected_sha:raise ValueError('Reconstructed installer differs from locally accepted DMG')
+            print('Original final DMG reconstructed byte for byte; SHA-256 matches local acceptance',flush=True)
+            current=release()
+            if not current['draft'] or any(a['name']==filename for a in current['assets']):raise ValueError('Draft changed')
+            subprocess.run(['gh','release','upload','v'+version,str(output),'--repo',repo],check=True)
+            current=release();uploaded=next(a for a in current['assets'] if a['name']==filename)
+            if not current['draft'] or not valid(uploaded):raise ValueError('Uploaded installer differs')
+            subprocess.run(['gh','api','--method','DELETE',f'repos/{repo}/releases/assets/{asset["id"]}'],check=True)
+            print('Verified complete installer in draft; temporary delta attachment removed',flush=True)
+          try:main()
+          except Exception as error:raise SystemExit('Reconstruction failed: '+type(error).__name__) from None
+          PYCODE
