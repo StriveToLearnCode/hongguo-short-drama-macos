@@ -47,5 +47,14 @@
   "temporaryReceiverDescriptorRemoved": true,
   "temporaryTunnelClosed": true,
   "authorizationRecord": "publication-decision.json",
-  "strictDefaultReleaseGateUnchanged": true
+  "strictDefaultReleaseGateUnchanged": true,
+  "website": {
+    "url": "https://strivetolearncode.github.io/hongguo-short-drama-macos/",
+    "pagesCommit": "dbf8637445a357fe61031a8eecbe00e4764add0d",
+    "pagesStatus": "built",
+    "canonicalIndexMatchesLocal": true,
+    "canonicalManifestMatchesLocal": true,
+    "indexSHA256": "c7ea49541199f5233e9bbfb904058519ce7fdd6242c1303dba5d3dbb143abb9b",
+    "checkedAt": "2026-11-16T15:44:33.807271+00:00"
+  }
 }
