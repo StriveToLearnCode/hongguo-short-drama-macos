@@ -5,103 +5,124 @@ on:
       version: {required: true, type: string}
       sha256: {required: true, type: string}
       size: {required: true, type: string}
+      chunk_hashes: {required: true, type: string}
 permissions:
   contents: write
 jobs:
   receive:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 35
     steps:
-      - name: Receive chunks and verify the original package before uploading to the draft
-        uses: actions/github-script@v7
+      - name: Receive only declared public package chunks and verify original installer
         env:
-          VERSION: ${{ inputs.version }}
-          EXPECTED_SHA: ${{ inputs.sha256 }}
-          EXPECTED_SIZE: ${{ inputs.size }}
           GH_TOKEN: ${{ github.token }}
-        with:
-          script: |
-            const fs = require('node:fs');
-            const path = require('node:path');
-            const http = require('node:http');
-            const crypto = require('node:crypto');
-            const cp = require('node:child_process');
-            const {VERSION, EXPECTED_SHA, EXPECTED_SIZE} = process.env;
-            if (!/^\d+\.\d+\.\d+$/.test(VERSION) || !/^[a-f0-9]{64}$/.test(EXPECTED_SHA) || !/^\d+$/.test(EXPECTED_SIZE) || Number(EXPECTED_SIZE) > 2000000000 || Number(EXPECTED_SIZE) <= 0) throw Error('Invalid inputs');
-            const repo = context.repo;
-            const release = (await github.paginate(github.rest.repos.listReleases, repo)).find(r => r.tag_name === `v${VERSION}`);
-            if (!release?.draft || release.prerelease) throw Error('Expected an existing stable draft');
-            const filename = `HongguoMac-${VERSION}-universal.dmg`;
-            const existing = release.assets.find(a => a.name === filename);
-            if (existing) {
-              if (existing.state === 'uploaded' && existing.size === Number(EXPECTED_SIZE) && existing.digest === `sha256:${EXPECTED_SHA}`) return;
-              throw Error('Existing package does not match');
-            }
-            const work = fs.mkdtempSync(path.join(process.env.RUNNER_TEMP, 'receive-release-'));
-            const cliRelease = (await github.rest.repos.getLatestRelease({owner:'cloudflare', repo:'cloudflared'})).data;
-            const binaryAsset = cliRelease.assets.find(a => a.name === 'cloudflared-linux-amd64');
-            if (!binaryAsset?.digest?.startsWith('sha256:')) throw Error('Missing tunnel binary digest');
-            const response = await fetch(binaryAsset.browser_download_url);
-            if (!response.ok) throw Error('Tunnel binary download failed');
-            const binary = Buffer.from(await response.arrayBuffer());
-            if (`sha256:${crypto.createHash('sha256').update(binary).digest('hex')}` !== binaryAsset.digest) throw Error('Tunnel binary checksum mismatch');
-            const cli = path.join(work, 'cloudflared'); fs.writeFileSync(cli, binary, {mode:0o700});
-            const token = crypto.randomBytes(32).toString('hex');
-            const chunkSize = 4 * 1024 * 1024, count = Math.ceil(Number(EXPECTED_SIZE) / chunkSize);
-            const received = new Set(), writing = new Set();
-            const server = http.createServer(async (req, res) => {
-              try {
-                const match = new RegExp(`^/${token}/(\\d+)$`).exec(req.url);
-                if (req.method !== 'PUT' || !match) { res.writeHead(404); res.end(); return; }
-                const index = Number(match[1]);
-                const length = Math.min(chunkSize, Number(EXPECTED_SIZE) - index * chunkSize);
-                const expectedHash = req.headers['x-chunk-sha256'];
-                if (index < 0 || index >= count || Number(req.headers['content-length']) !== length || !/^[a-f0-9]{64}$/.test(expectedHash || '')) { res.writeHead(400); res.end(); return; }
-                if (writing.has(index)) { res.writeHead(409); res.end(); return; }
-                writing.add(index);
-                try {
-                  const chunks = []; let bytes = 0;
-                  for await (const chunk of req) { bytes += chunk.length; if (bytes > length) throw Error('Oversized chunk'); chunks.push(chunk); }
-                  const body = Buffer.concat(chunks);
-                  if (body.length !== length || crypto.createHash('sha256').update(body).digest('hex') !== expectedHash) throw Error('Chunk mismatch');
-                  fs.writeFileSync(path.join(work, `part-${index}`), body);
-                  received.add(index); core.info(`Received ${received.size}/${count} verified chunks`);
-                  res.writeHead(200); res.end('verified');
-                } finally { writing.delete(index); }
-              } catch { if (!res.headersSent) res.writeHead(400); res.end(); }
-            });
-            let tunnel, endpointAsset;
-            try {
-              await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-              tunnel = cp.spawn(cli, ['tunnel','--url',`http://127.0.0.1:${server.address().port}`,'--protocol','http2','--no-autoupdate']);
-              const origin = await new Promise((resolve,reject) => {
-                const timer = setTimeout(() => reject(Error('Tunnel startup timeout')), 120000);
-                const parse = data => { const m = data.toString().match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/); if (m) {clearTimeout(timer); resolve(m[0]);} };
-                tunnel.stdout.on('data',parse); tunnel.stderr.on('data',parse);
-                tunnel.on('exit',() => {clearTimeout(timer); reject(Error('Tunnel exited'));});
-              });
-              const endpointFile = path.join(work, `transfer-receiver-${VERSION}.json`);
-              fs.writeFileSync(endpointFile, JSON.stringify({version:VERSION,sha256:EXPECTED_SHA,size:Number(EXPECTED_SIZE),chunkSize,count,endpoint:`${origin}/${token}`}));
-              cp.execFileSync('gh',['release','upload',`v${VERSION}`,endpointFile,'--repo',`${repo.owner}/${repo.repo}`],{stdio:'inherit'});
-              const metadata = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
-              endpointAsset = metadata.assets.find(a => a.name === path.basename(endpointFile));
-              if (!endpointAsset) throw Error('Receiver metadata missing');
-              core.info('Receiver ready; waiting for verified chunks');
-              const deadline = Date.now() + 25 * 60 * 1000;
-              while (received.size !== count && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve,1000));
-              if (received.size !== count) throw Error('Receiver timed out');
-              const file = path.join(work, filename); const digest = crypto.createHash('sha256');
-              for (let index = 0; index < count; index++) { const body = fs.readFileSync(path.join(work,`part-${index}`)); digest.update(body); fs.appendFileSync(file,body); }
-              if (fs.statSync(file).size !== Number(EXPECTED_SIZE) || digest.digest('hex') !== EXPECTED_SHA) throw Error('Final checksum mismatch');
-              const current = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
-              if (!current.draft || current.assets.some(a => a.name === filename)) throw Error('Draft changed');
-              cp.execFileSync('gh',['release','upload',`v${VERSION}`,file,'--repo',`${repo.owner}/${repo.repo}`],{stdio:'inherit'});
-              const uploaded = (await github.rest.repos.getRelease({...repo,release_id:release.id})).data;
-              const asset = uploaded.assets.find(a => a.name === filename);
-              if (!uploaded.draft || asset?.state !== 'uploaded' || asset.size !== Number(EXPECTED_SIZE) || asset.digest !== `sha256:${EXPECTED_SHA}`) throw Error('Uploaded package mismatch');
-              core.info('Original verified package uploaded; release remains a draft');
-            } finally {
-              if (endpointAsset) await github.rest.repos.deleteReleaseAsset({...repo,asset_id:endpointAsset.id});
-              tunnel?.kill(); server.close();
-              fs.rmSync(work,{recursive:true,force:true});
-            }
+          GH_REPO: ${{ github.repository }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          PACKAGE_SHA256: ${{ inputs.sha256 }}
+          PACKAGE_SIZE: ${{ inputs.size }}
+          CHUNK_HASHES: ${{ inputs.chunk_hashes }}
+        shell: bash
+        run: |
+          python3 - <<'PYCODE'
+          import hashlib, http.server, json, os, pathlib, queue, re, socket, subprocess, tempfile, threading, time, urllib.request
+          version=os.environ['RELEASE_VERSION']; expected=os.environ['PACKAGE_SHA256']; size=int(os.environ['PACKAGE_SIZE'])
+          chunk_hashes=json.loads(os.environ['CHUNK_HASHES']); chunk_size=4*1024*1024
+          if not re.fullmatch(r'\d+\.\d+\.\d+',version) or not re.fullmatch('[a-f0-9]{64}',expected) or not 0<size<=2_000_000_000:
+              raise SystemExit('Invalid package identity')
+          if len(chunk_hashes)!=(size+chunk_size-1)//chunk_size or any(not re.fullmatch('[a-f0-9]{64}',s) for s in chunk_hashes):
+              raise SystemExit('Invalid chunk manifest')
+          repo=os.environ['GH_REPO']; filename=f'HongguoMac-{version}-universal.dmg'
+          def gh_json(*args):return json.loads(subprocess.check_output(['gh',*args]))
+          def release():return gh_json('release','view',f'v{version}','--repo',repo,'--json','isDraft,isPrerelease,assets')
+          def valid(asset):return asset.get('state')=='uploaded' and asset.get('size')==size and asset.get('digest')=='sha256:'+expected
+          start=release()
+          if not start['isDraft'] or start['isPrerelease']:raise SystemExit('Expected existing stable draft')
+          old=next((a for a in start['assets'] if a['name']==filename),None)
+          if old:
+              if valid(old):print('Exact package already uploaded');raise SystemExit(0)
+              raise SystemExit('Existing package differs; review before replacing')
+          with tempfile.TemporaryDirectory(prefix='verified-release-receiver-') as temporary:
+              work=pathlib.Path(temporary);received=set();lock=threading.Lock();slots=threading.BoundedSemaphore(8)
+              class Receiver(http.server.BaseHTTPRequestHandler):
+                  def log_message(self,*args):pass
+                  def respond(self,status,body=b''):
+                      self.send_response(status);self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
+                  def do_GET(self):
+                      if self.path!='/status':self.respond(404);return
+                      with lock:body=json.dumps({'received':sorted(received)}).encode()
+                      self.respond(200,body)
+                  def do_PUT(self):
+                      match=re.fullmatch(r'/chunks/(\d{1,3})',self.path)
+                      if not match:self.respond(404);return
+                      index=int(match[1]);length=min(chunk_size,size-index*chunk_size)
+                      if not 0<=index<len(chunk_hashes) or self.headers.get('Content-Length')!=str(length):self.respond(400);return
+                      if not slots.acquire(blocking=False):self.respond(503);return
+                      try:
+                          self.connection.settimeout(60);body=self.rfile.read(length)
+                          if len(body)!=length or hashlib.sha256(body).hexdigest()!=chunk_hashes[index]:self.respond(400);return
+                          with lock:
+                              if index not in received:
+                                  (work/f'part-{index}').write_bytes(body);received.add(index)
+                          self.respond(200,b'verified')
+                      finally:slots.release()
+              server=http.server.ThreadingHTTPServer(('127.0.0.1',0),Receiver)
+              threading.Thread(target=server.serve_forever,daemon=True).start()
+              tunnel=None;endpoint_asset=None
+              try:
+                  # Fixed official binary, no installer, no privileged service or auto-update.
+                  url='https://github.com/cloudflare/cloudflared/releases/download/2026.11.0/cloudflared-linux-amd64'
+                  with urllib.request.urlopen(url,timeout=120) as response:binary=response.read(40_283_100)
+                  if len(binary)!=40_283_099 or hashlib.sha256(binary).hexdigest()!='51f7c68b57ed7269164075d7e789efce5b59355982f06392deeb037d982a51fd':
+                      raise SystemExit('Official tunnel binary digest mismatch')
+                  cli=work/'cloudflared';cli.write_bytes(binary);cli.chmod(0o700);del binary
+                  # Source audit found hardcoded crash reporting to sentry.io. Block that
+                  # hostname in this disposable runner before starting the vendor binary.
+                  subprocess.run(['sudo','sh','-c',"printf '\\n127.0.0.1 sentry.io # hongguo-release-disable-crash-reporting\\n' >> /etc/hosts"],check=True)
+                  if {a[4][0] for a in socket.getaddrinfo('sentry.io',443)} != {'127.0.0.1'}:
+                      raise SystemExit('Crash reporting block could not be verified')
+                  tunnel_env={k:v for k,v in os.environ.items() if k in ('PATH','LANG','LC_ALL','TMPDIR')}
+                  tunnel=subprocess.Popen([str(cli),'tunnel','--url',f'http://127.0.0.1:{server.server_port}','--protocol','http2','--no-autoupdate','--metrics','127.0.0.1:0'],env=tunnel_env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+                  origins=queue.Queue()
+                  def read_origin():
+                      # Raw process output, including provisioning diagnostics, stays in memory.
+                      for line in tunnel.stdout:
+                          match=re.search(rb'https://[a-z0-9-]+\.trycloudflare\.com',line)
+                          if match:origins.put(match[0].decode())
+                  threading.Thread(target=read_origin,daemon=True).start()
+                  origin=origins.get(timeout=120)
+                  # This public descriptor is informational: there is no bearer token or secret URL path.
+                  # PUT accepts only the predeclared public installer chunks after SHA-256 checks.
+                  descriptor=work/f'transfer-receiver-{version}.json'
+                  descriptor.write_text(json.dumps({'version':version,'sha256':expected,'size':size,'chunkSize':chunk_size,'count':len(chunk_hashes),'endpoint':origin}))
+                  subprocess.run(['gh','release','upload',f'v{version}',str(descriptor),'--repo',repo],check=True)
+                  endpoint_asset=next(a['id'] for a in release()['assets'] if a['name']==descriptor.name)
+                  print('Receiver ready; only declared installer chunks accepted',flush=True)
+                  deadline=time.monotonic()+25*60;previous=-1
+                  while time.monotonic()<deadline:
+                      with lock:count=len(received)
+                      if count!=previous:print(f'Verified chunks {count}/{len(chunk_hashes)}',flush=True);previous=count
+                      if count==len(chunk_hashes):break
+                      if tunnel.poll() is not None:raise SystemExit('Temporary tunnel exited')
+                      time.sleep(1)
+                  else:raise SystemExit('Installer transfer timed out')
+                  server.shutdown();tunnel.terminate();tunnel.wait(timeout=15)
+                  package=work/filename;digest=hashlib.sha256()
+                  with package.open('wb') as target:
+                      for index in range(len(chunk_hashes)):
+                          body=(work/f'part-{index}').read_bytes();digest.update(body);target.write(body)
+                  if package.stat().st_size!=size or digest.hexdigest()!=expected:raise SystemExit('Full installer verification failed')
+                  current=release()
+                  if not current['isDraft'] or any(a['name']==filename for a in current['assets']):raise SystemExit('Draft changed')
+                  subprocess.run(['gh','release','upload',f'v{version}',str(package),'--repo',repo],check=True)
+                  result=release();asset=next((a for a in result['assets'] if a['name']==filename),{})
+                  if not result['isDraft'] or not valid(asset):raise SystemExit('Uploaded installer differs')
+                  print('Original package verified and uploaded. Release remains a draft.',flush=True)
+              finally:
+                  server.shutdown();server.server_close()
+                  if tunnel and tunnel.poll() is None:
+                      tunnel.terminate()
+                      try:tunnel.wait(timeout=15)
+                      except subprocess.TimeoutExpired:tunnel.kill();tunnel.wait()
+                  if endpoint_asset:
+                      subprocess.run(['gh','api','--method','DELETE',f'repos/{repo}/releases/assets/{endpoint_asset}'],check=True)
+          PYCODE
