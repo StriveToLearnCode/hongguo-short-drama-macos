@@ -33,7 +33,9 @@ jobs:
               raise SystemExit('Invalid chunk manifest')
           repo=os.environ['GH_REPO']; filename=f'HongguoMac-{version}-universal.dmg'
           def gh_json(*args):return json.loads(subprocess.check_output(['gh',*args]))
-          def release():return gh_json('release','view',f'v{version}','--repo',repo,'--json','isDraft,isPrerelease,assets')
+          def release():
+              raw=next(r for r in gh_json('api',f'repos/{repo}/releases?per_page=100') if r['tag_name']==f'v{version}')
+              return dict(isDraft=raw['draft'],isPrerelease=raw['prerelease'],assets=raw['assets'])
           def valid(asset):return asset.get('state')=='uploaded' and asset.get('size')==size and asset.get('digest')=='sha256:'+expected
           start=release()
           if not start['isDraft'] or start['isPrerelease']:raise SystemExit('Expected existing stable draft')
