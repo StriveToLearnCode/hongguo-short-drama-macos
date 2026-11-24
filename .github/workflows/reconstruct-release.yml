@@ -1,4 +1,4 @@
-name: Reconstruct verified v1.3.6 installer
+name: Reconstruct verified v1.3.7 installer
 on:
   workflow_dispatch:
 permissions:
@@ -17,10 +17,10 @@ jobs:
           python3 - <<'PYCODE'
           from pathlib import Path
           import gzip,hashlib,json,os,struct,subprocess,tempfile,urllib.request
-          repo=os.environ['GH_REPO'];version='1.3.6';filename='HongguoMac-1.3.6-universal.dmg'
-          expected_size=342667628;expected_sha='69afb21eefa1cdf524be2ba1fd93214c3e2393d202d4a4b5651f5156603e095a'
-          patch_name='HongguoMac-1.3.6-from-1.3.5.delta.gz';patch_sha='b71774ca22fdc466e97bdf84fb8d152462489dc2a5b11a4fa0008b4273ddd9f2'
-          baseline_sha='caeeeb709f7e7294319305949cb415599a88f1d22bc588ac77e0d6c5d0b4b2d1';baseline_size=341675075
+          repo=os.environ['GH_REPO'];version='1.3.7';filename='HongguoMac-1.3.7-universal.dmg'
+          expected_size=341683761;expected_sha='38539b063a7073a285a9cb9f60e342ec37b7f8117b8d76511e67f8612b6e4c26'
+          patch_name='HongguoMac-1.3.7-from-1.3.6.delta.gz';patch_sha='ed11d6f76affad7806229ed7fb5ba289ee3c2b5e45f43dc9fe59e09170b1c207'
+          baseline_sha='69afb21eefa1cdf524be2ba1fd93214c3e2393d202d4a4b5651f5156603e095a';baseline_size=342667628
           
           def gh(*args):return json.loads(subprocess.check_output(['gh',*args]))
           def release():return next(r for r in gh('api',f'repos/{repo}/releases?per_page=100') if r['tag_name']=='v'+version)
@@ -39,13 +39,13 @@ jobs:
             if valid(old):print('Exact original installer already present');return
             raise ValueError('Unexpected existing installer')
            asset=next(a for a in r['assets'] if a['name']==patch_name)
-           if asset['size']!=17544967 or asset['digest']!='sha256:'+patch_sha or asset['state']!='uploaded':raise ValueError('Delta attachment differs')
+           if asset['size']!=19553923 or asset['digest']!='sha256:'+patch_sha or asset['state']!='uploaded':raise ValueError('Delta attachment differs')
            with tempfile.TemporaryDirectory(prefix='exact-release-reconstruction-') as t:
             work=Path(t);patch=work/patch_name;base=work/'baseline.dmg';output=work/filename
             with patch.open('wb') as f:subprocess.run(['gh','api',f'repos/{repo}/releases/assets/{asset["id"]}','-H','Accept: application/octet-stream'],stdout=f,check=True)
             if sha(patch)!=patch_sha:raise ValueError('Delta download digest mismatch')
             print('Verified delta attachment',flush=True)
-            url='https://github.com/'+repo+'/releases/download/v1.3.5/HongguoMac-1.3.5-universal.dmg'
+            url='https://github.com/'+repo+'/releases/download/v1.3.6/HongguoMac-1.3.6-universal.dmg'
             with urllib.request.urlopen(url,timeout=180) as response,base.open('wb') as f:
              total=0
              while True:
@@ -55,7 +55,7 @@ jobs:
               if total>baseline_size:raise ValueError('Oversized baseline')
               f.write(data)
             if base.stat().st_size!=baseline_size or sha(base)!=baseline_sha:raise ValueError('Published baseline differs')
-            print('Verified immutable v1.3.5 baseline',flush=True)
+            print('Verified immutable v1.3.6 baseline',flush=True)
             with base.open('rb') as b,gzip.open(patch,'rb') as p,output.open('wb') as target:
              if p.read(8)!=b'HGDIFF1\0' or struct.unpack('<Q',p.read(8))[0]!=expected_size:raise ValueError('Invalid delta header')
              written=0
